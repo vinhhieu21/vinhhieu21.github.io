@@ -3,46 +3,798 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Name</title>
+  <meta
+    name="description"
+    content="Personal website of Hieu Bui Vinh, featuring projects, background, and contact details."
+  />
+  <title>Hieu Bui Vinh | Personal Website</title>
   <style>
+    :root {
+      color-scheme: light;
+      --bg: #f4efe5;
+      --bg-elevated: rgba(255, 255, 255, 0.78);
+      --bg-strong: #fffaf0;
+      --surface-border: rgba(75, 53, 36, 0.12);
+      --text: #1e1a17;
+      --muted: #5f534d;
+      --accent: #a5482c;
+      --accent-strong: #7d311c;
+      --accent-soft: rgba(165, 72, 44, 0.12);
+      --shadow: 0 24px 60px rgba(80, 48, 30, 0.12);
+      --hero-gradient: radial-gradient(circle at top left, rgba(214, 132, 93, 0.24), transparent 40%),
+        radial-gradient(circle at 85% 15%, rgba(240, 196, 122, 0.34), transparent 30%),
+        linear-gradient(135deg, #f4efe5, #efe4d0 55%, #e8d8c0);
+      --card-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.9), rgba(255, 250, 240, 0.82));
+      --grid-line: rgba(125, 49, 28, 0.08);
+    }
+
+    body[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #101418;
+      --bg-elevated: rgba(20, 26, 32, 0.78);
+      --bg-strong: #171d24;
+      --surface-border: rgba(255, 255, 255, 0.08);
+      --text: #f4efe8;
+      --muted: #b2b9c5;
+      --accent: #ff996c;
+      --accent-strong: #ffb18d;
+      --accent-soft: rgba(255, 153, 108, 0.14);
+      --shadow: 0 24px 60px rgba(0, 0, 0, 0.35);
+      --hero-gradient: radial-gradient(circle at top left, rgba(255, 153, 108, 0.18), transparent 34%),
+        radial-gradient(circle at 80% 0%, rgba(80, 143, 255, 0.18), transparent 28%),
+        linear-gradient(135deg, #101418, #121922 52%, #18212c);
+      --card-gradient: linear-gradient(180deg, rgba(23, 29, 36, 0.96), rgba(18, 24, 31, 0.9));
+      --grid-line: rgba(255, 255, 255, 0.06);
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 40px;
-      max-width: 900px;
-      margin-inline: auto;
-      line-height: 1.6;
-      background: #f7f7f7;
-      color: #222;
+      min-height: 100vh;
+      font-family: "Avenir Next", "Segoe UI", sans-serif;
+      background:
+        linear-gradient(var(--grid-line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+        var(--bg);
+      background-size: 72px 72px, 72px 72px, auto;
+      color: var(--text);
+      transition: background-color 240ms ease, color 240ms ease;
     }
-    .card {
-      background: white;
-      padding: 32px;
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: var(--hero-gradient);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255, 255, 255, 0), rgba(0, 0, 0, 0.04));
+      pointer-events: none;
+      z-index: -1;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .page-shell {
+      width: min(1180px, calc(100% - 32px));
+      margin: 0 auto;
+      padding: 24px 0 56px;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      position: sticky;
+      top: 16px;
+      z-index: 20;
+      margin-bottom: 28px;
+      border: 1px solid var(--surface-border);
+      border-radius: 999px;
+      background: var(--bg-elevated);
+      backdrop-filter: blur(18px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      font-size: 0.85rem;
+    }
+
+    .brand-mark {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      box-shadow: 0 10px 24px rgba(165, 72, 44, 0.25);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: center;
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .nav-links a:hover,
+    .nav-links a:focus-visible,
+    .link:hover,
+    .link:focus-visible {
+      color: var(--accent);
+    }
+
+    .theme-toggle {
+      border: 1px solid var(--surface-border);
+      background: var(--bg-strong);
+      color: var(--text);
+      border-radius: 999px;
+      padding: 10px 14px;
+      font: inherit;
+      cursor: pointer;
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+    }
+
+    .theme-toggle:hover,
+    .theme-toggle:focus-visible,
+    .button:hover,
+    .button:focus-visible,
+    .secondary-button:hover,
+    .secondary-button:focus-visible {
+      transform: translateY(-1px);
+      border-color: rgba(165, 72, 44, 0.3);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.35fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+      margin-bottom: 24px;
+    }
+
+    .panel {
+      position: relative;
+      overflow: hidden;
+      border: 1px solid var(--surface-border);
+      border-radius: 32px;
+      background: var(--card-gradient);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(18px);
+    }
+
+    .hero-copy {
+      padding: 48px;
+    }
+
+    .eyebrow,
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 0.84rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-weight: 700;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: clamp(3rem, 8vw, 5.8rem);
+      line-height: 0.94;
+      margin-top: 22px;
+      max-width: 11ch;
+    }
+
+    .lead {
+      max-width: 58ch;
+      font-size: 1.08rem;
+      line-height: 1.8;
+      color: var(--muted);
+      margin: 24px 0 0;
+    }
+
+    .hero-actions,
+    .social-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .hero-actions {
+      margin-top: 28px;
+    }
+
+    .button,
+    .secondary-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border-radius: 999px;
+      padding: 14px 20px;
+      font-weight: 700;
+      transition: transform 180ms ease, background-color 180ms ease, border-color 180ms ease;
+    }
+
+    .button {
+      background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+      color: white;
+      box-shadow: 0 14px 28px rgba(165, 72, 44, 0.2);
+    }
+
+    .secondary-button {
+      border: 1px solid var(--surface-border);
+      background: var(--bg-strong);
+      color: var(--text);
+    }
+
+    .hero-card {
+      padding: 28px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      min-height: 100%;
+    }
+
+    .portrait {
+      position: relative;
+      padding: 24px;
+      border-radius: 28px;
+      min-height: 360px;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 255, 255, 0.3), transparent 24%),
+        linear-gradient(145deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.04));
+      border: 1px solid rgba(255, 255, 255, 0.12);
+    }
+
+    .portrait::before,
+    .portrait::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(2px);
+    }
+
+    .portrait::before {
+      width: 160px;
+      height: 160px;
+      background: rgba(255, 153, 108, 0.18);
+      top: 26px;
+      right: 28px;
+    }
+
+    .portrait::after {
+      width: 120px;
+      height: 120px;
+      background: rgba(84, 166, 255, 0.18);
+      bottom: 30px;
+      left: 24px;
+    }
+
+    .portrait-badge {
+      position: absolute;
+      top: 24px;
+      left: 24px;
+      padding: 10px 12px;
       border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      background: rgba(255, 255, 255, 0.14);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      font-size: 0.9rem;
     }
-    h1 { margin-top: 0; }
-    a { color: #0a66c2; text-decoration: none; }
+
+    .portrait-figure {
+      position: absolute;
+      inset: auto 34px 30px 34px;
+      border-radius: 28px;
+      padding: 24px;
+      background: linear-gradient(180deg, rgba(21, 24, 30, 0.86), rgba(31, 36, 43, 0.92));
+      color: #f6efe8;
+      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+
+    body[data-theme="light"] .portrait-figure,
+    body:not([data-theme="dark"]) .portrait-figure {
+      background: linear-gradient(180deg, rgba(74, 48, 37, 0.92), rgba(47, 31, 26, 0.95));
+    }
+
+    .portrait-figure h2 {
+      font-size: clamp(1.9rem, 4vw, 2.8rem);
+      margin-bottom: 8px;
+    }
+
+    .portrait-figure p {
+      margin: 0;
+      line-height: 1.7;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .mini-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .stat {
+      padding: 16px;
+      border-radius: 20px;
+      background: var(--bg-strong);
+      border: 1px solid var(--surface-border);
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.45rem;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      margin-bottom: 4px;
+    }
+
+    .stat span,
+    .meta,
+    .muted {
+      color: var(--muted);
+    }
+
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .section {
+      padding: 32px;
+    }
+
+    .section h2 {
+      font-size: clamp(2rem, 4vw, 3rem);
+      margin-top: 18px;
+      margin-bottom: 16px;
+    }
+
+    .section p {
+      margin: 0;
+      line-height: 1.8;
+      color: var(--muted);
+    }
+
+    .project-list,
+    .notes-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .project,
+    .note {
+      padding: 22px;
+      border-radius: 24px;
+      border: 1px solid var(--surface-border);
+      background: rgba(255, 255, 255, 0.03);
+      transition: transform 180ms ease, border-color 180ms ease, background-color 180ms ease;
+    }
+
+    .project:hover,
+    .note:hover {
+      transform: translateY(-3px);
+      border-color: rgba(165, 72, 44, 0.28);
+      background: rgba(255, 255, 255, 0.06);
+    }
+
+    .project-top,
+    .timeline-row,
+    .footer-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .project h3,
+    .note h3 {
+      font-size: 1.25rem;
+      margin-bottom: 8px;
+    }
+
+    .chip-row {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+
+    .chip {
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: var(--accent-soft);
+      color: var(--accent-strong);
+      font-size: 0.84rem;
+      font-weight: 700;
+    }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      margin-top: 24px;
+    }
+
+    .timeline-item {
+      padding: 18px 0 0;
+      border-top: 1px solid var(--surface-border);
+    }
+
+    .timeline-item:first-child {
+      border-top: none;
+      padding-top: 0;
+    }
+
+    .quote-card {
+      margin-top: 24px;
+      padding: 26px;
+      border-radius: 28px;
+      background: linear-gradient(135deg, rgba(165, 72, 44, 0.12), rgba(84, 166, 255, 0.08));
+      border: 1px solid var(--surface-border);
+    }
+
+    .quote-card blockquote {
+      margin: 0;
+      font-family: "Iowan Old Style", "Palatino Linotype", serif;
+      font-size: 1.45rem;
+      line-height: 1.5;
+    }
+
+    .quote-card p {
+      margin-top: 12px;
+      font-size: 0.96rem;
+    }
+
+    .footer-panel {
+      padding: 30px 32px;
+    }
+
+    .footer-panel p {
+      margin: 10px 0 0;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      animation: rise 700ms ease forwards;
+    }
+
+    .delay-1 { animation-delay: 80ms; }
+    .delay-2 { animation-delay: 160ms; }
+    .delay-3 { animation-delay: 240ms; }
+    .delay-4 { animation-delay: 320ms; }
+
+    @keyframes rise {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 980px) {
+      .hero,
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-copy,
+      .section,
+      .footer-panel {
+        padding: 28px;
+      }
+
+      .nav {
+        border-radius: 28px;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .page-shell {
+        width: min(100% - 20px, 1180px);
+        padding-top: 14px;
+      }
+
+      .nav {
+        position: static;
+        padding: 16px;
+      }
+
+      .nav-links {
+        justify-content: flex-start;
+      }
+
+      h1 {
+        max-width: none;
+      }
+
+      .portrait {
+        min-height: 300px;
+      }
+
+      .portrait-figure {
+        inset: auto 18px 18px 18px;
+      }
+
+      .mini-stats {
+        grid-template-columns: 1fr;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="card">
-    <h1>Hello, I'm Your Name</h1>
-    <p>Welcome to my personal website hosted on GitHub Pages.</p>
+  <div class="page-shell">
+    <nav class="nav reveal">
+      <a class="brand" href="#top" aria-label="Go to top">
+        <span class="brand-mark">HB</span>
+        <span>Hieu Bui Vinh</span>
+      </a>
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#work">Work</a>
+        <a href="#now">Now</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle color theme">
+        Toggle Theme
+      </button>
+    </nav>
 
-    <h2>About Me</h2>
-    <p>I’m learning web development and building my online portfolio.</p>
+    <main id="top">
+      <section class="hero">
+        <article class="panel hero-copy reveal delay-1">
+          <span class="eyebrow">Personal Website</span>
+          <h1>Building clean digital experiences with calm, precise design.</h1>
+          <p class="lead">
+            I am Hieu Bui Vinh. This site is a simple home for my work, experiments, and the things I am learning.
+            I care about thoughtful interfaces, practical engineering, and turning rough ideas into something clear.
+          </p>
+          <div class="hero-actions">
+            <a class="button" href="#contact">Let's connect</a>
+            <a class="secondary-button" href="#work">See selected work</a>
+          </div>
+          <div class="mini-stats">
+            <div class="stat">
+              <strong>01</strong>
+              <span>Personal brand page ready for GitHub Pages</span>
+            </div>
+            <div class="stat">
+              <strong>02</strong>
+              <span>Persistent light and dark theme toggle</span>
+            </div>
+            <div class="stat">
+              <strong>03</strong>
+              <span>Easy to customize sections and content</span>
+            </div>
+          </div>
+        </article>
 
-    <h2>Projects</h2>
-    <ul>
-      <li>Project 1</li>
-      <li>Project 2</li>
-      <li>Project 3</li>
-    </ul>
+        <aside class="panel hero-card reveal delay-2">
+          <div class="portrait">
+            <div class="portrait-badge">Open to collaboration</div>
+            <div class="portrait-figure">
+              <h2>Designer mindset, builder workflow.</h2>
+              <p>
+                This layout is intentionally editorial instead of template-like, so the site feels personal rather
+                than generic.
+              </p>
+            </div>
+          </div>
+          <div class="social-row">
+            <a class="secondary-button link" href="https://github.com/vinhhieu21" target="_blank" rel="noreferrer">
+              GitHub
+            </a>
+            <a class="secondary-button link" href="mailto:hello@example.com">
+              Email
+            </a>
+          </div>
+        </aside>
+      </section>
 
-    <h2>Contact</h2>
-    <p>Email: you@example.com</p>
-    <p>GitHub: <a href="https://github.com/yourusername">github.com/yourusername</a></p>
+      <section class="content-grid">
+        <article class="panel section reveal delay-2" id="about">
+          <span class="section-label">About</span>
+          <h2>A stronger first impression than a raw placeholder page.</h2>
+          <p>
+            Your original homepage had the right intent but very little hierarchy, personality, or interaction.
+            This version adds a structured narrative: who you are, what you make, what you are focused on now,
+            and how people can reach you.
+          </p>
+          <div class="quote-card">
+            <blockquote>
+              "Good personal websites feel less like resumes and more like clear invitations."
+            </blockquote>
+            <p>Use this space to replace the copy with your real background, interests, and goals.</p>
+          </div>
+          <div class="timeline">
+            <div class="timeline-item">
+              <div class="timeline-row">
+                <strong>Focus</strong>
+                <span class="meta">Frontend, web, product thinking</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-row">
+                <strong>Style</strong>
+                <span class="meta">Clean code, readable UI, calm motion</span>
+              </div>
+            </div>
+            <div class="timeline-item">
+              <div class="timeline-row">
+                <strong>Goal</strong>
+                <span class="meta">Turn this into your public portfolio hub</span>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="panel section reveal delay-3" id="now">
+          <span class="section-label">Now</span>
+          <h2>What I am working on.</h2>
+          <div class="notes-list">
+            <div class="note">
+              <h3>Learning in public</h3>
+              <p>Sharing experiments, small builds, and lessons from improving design and frontend skills.</p>
+            </div>
+            <div class="note">
+              <h3>Refining this site</h3>
+              <p>Adding real project pages, better copy, and links that reflect your current online presence.</p>
+            </div>
+            <div class="note">
+              <h3>Keeping it lightweight</h3>
+              <p>Everything is contained in one static page, so it deploys fast and stays easy to maintain.</p>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="panel section reveal delay-3" id="work">
+        <span class="section-label">Selected Work</span>
+        <h2>Start with these featured areas.</h2>
+        <p>
+          Replace these cards with real projects as you build them. The structure is already in place, so you only
+          need to update the title, summary, and tags.
+        </p>
+        <div class="project-list">
+          <article class="project">
+            <div class="project-top">
+              <h3>Portfolio Experiments</h3>
+              <span class="meta">Case study placeholder</span>
+            </div>
+            <p>
+              A place for interface explorations, landing pages, and visual systems that show how you think about
+              layout, type, and interaction.
+            </p>
+            <div class="chip-row">
+              <span class="chip">HTML</span>
+              <span class="chip">CSS</span>
+              <span class="chip">UI Design</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Small Web Tools</h3>
+              <span class="meta">Utility apps</span>
+            </div>
+            <p>
+              Showcase practical mini-projects that solve one clear problem well and demonstrate engineering range.
+            </p>
+            <div class="chip-row">
+              <span class="chip">JavaScript</span>
+              <span class="chip">Product Thinking</span>
+              <span class="chip">UX</span>
+            </div>
+          </article>
+
+          <article class="project">
+            <div class="project-top">
+              <h3>Writing and Notes</h3>
+              <span class="meta">Optional section</span>
+            </div>
+            <p>
+              If you write, document what you learn. That makes the site more memorable than a project list alone.
+            </p>
+            <div class="chip-row">
+              <span class="chip">Notes</span>
+              <span class="chip">Learning</span>
+              <span class="chip">Personal Brand</span>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="panel footer-panel reveal delay-4" id="contact">
+      <div class="footer-row">
+        <div>
+          <span class="section-label">Contact</span>
+          <h2 style="margin-top: 16px;">Let's build something thoughtful.</h2>
+        </div>
+        <div class="social-row">
+          <a class="button" href="mailto:hello@example.com">hello@example.com</a>
+          <a class="secondary-button" href="https://github.com/vinhhieu21" target="_blank" rel="noreferrer">
+            github.com/vinhhieu21
+          </a>
+        </div>
+      </div>
+      <p>
+        Update the placeholder email address, project summaries, and biography with your real information.
+        The theme toggle will remember the visitor's last choice using local storage.
+      </p>
+    </footer>
   </div>
+
+  <script>
+    const root = document.body;
+    const toggle = document.getElementById("theme-toggle");
+    const storedTheme = localStorage.getItem("theme");
+    const systemPrefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+    const initialTheme = storedTheme || (systemPrefersDark ? "dark" : "light");
+
+    function setTheme(theme) {
+      root.setAttribute("data-theme", theme);
+      toggle.textContent = theme === "dark" ? "Switch to Light" : "Switch to Dark";
+      localStorage.setItem("theme", theme);
+    }
+
+    setTheme(initialTheme);
+
+    toggle.addEventListener("click", function () {
+      const nextTheme = root.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      setTheme(nextTheme);
+    });
+  </script>
 </body>
 </html>
