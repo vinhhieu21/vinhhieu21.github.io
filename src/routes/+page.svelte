@@ -42,7 +42,7 @@
 			ref: '#001_PLAYSTUDIOS',
 			code: '001_JAVA_BACKEND_ENGINEER',
 			years: 'TIMESTAMP: 11/2025 — PRESENT',
-			company: 'playStudios',
+			company: 'playSTUDIOS',
 			role: 'Java Backend Engineer · Hanoi, Vietnam',
 			featured: true,
 			items: [
