@@ -193,7 +193,10 @@
 
 <div class="page-shell">
 	<header class="topbar reveal">
-		<a class="brand" href="#top" aria-label="Go to top">[HIEU_BUI_VINH]</a>
+		<a class="brand" href="#top" aria-label="Go to top">
+			<span class="brand-icon">⌘</span>
+			<span>[HIEU_BUI_VINH]</span>
+		</a>
 		<nav class="nav" aria-label="Primary">
 			<a href="#top">HOME</a>
 			<a href="#experience">EXPERIENCE</a>
@@ -202,6 +205,7 @@
 		</nav>
 		<div class="toolbar">
 			<span class="system-status">SYSTEM_STATUS: ONLINE</span>
+			<button class="menu-toggle" type="button" aria-label="Open section menu">MENU</button>
 			<button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick={toggleTheme}>
 				{theme === 'dark' ? 'SOLAR' : 'RITUAL'}
 			</button>
@@ -216,13 +220,42 @@
 					HANOI, VIETNAM // BACKEND_ENGINEER
 				</div>
 				<h1>BUILDING RELIABLE BACKEND SYSTEMS FOR REAL PRODUCTS.</h1>
+				<div class="mobile-profile">
+					<img
+						src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYTZCJ01sIzz6NB7G0QlbokOrbJN36IhnAsxyEURvRQlrCCKUFzCKQIh3W0xrIIafBCIJzMXJ7oYPCoSkrbT9LetQkXq3Wpi3-dIsXaBVBPsBBmKzaIaMyuAefGq5acSLACcdexvPV3Hvf1Ucx35QE-Cu6Hj8nfcE36QLV1K5UjvVmidzeNPhI6wh6NepxeBmla5ONGHGaSh0-Wozr0HGrTiuVIODru2gfHZ-MV_d56YAaA3IWR92UGzFClY3U36tEAMVwwIOkdl8"
+						alt="Portrait of Hieu Bui Vinh"
+					/>
+					<div>
+						<strong>HIEU_BUI_VINH</strong>
+						<span>Java Backend Engineer / Distributed Systems</span>
+						<p>
+							Building production services across gaming, banking, fintech, and logistics with Java,
+							Spring, AWS, and Kubernetes.
+						</p>
+					</div>
+				</div>
 				<div class="hero-actions">
 					<a class="primary-cta" href="#experience">VIEW_EXPERIENCE</a>
+					<a class="secondary-cta" href="#contact">CONTACT_NODE</a>
 					<p>
 						I am Hieu Bui Vinh, a backend engineer working across Java, Spring, Go, cloud-native
 						platforms, microservices, and distributed systems. I build production services that stay
 						scalable, maintainable, and observable.
 					</p>
+				</div>
+				<div class="mobile-stats">
+					<div>
+						<span>CAREER</span>
+						<strong>5+Y</strong>
+					</div>
+					<div>
+						<span>ROLES</span>
+						<strong>04</strong>
+					</div>
+					<div>
+						<span>TOEIC</span>
+						<strong>870</strong>
+					</div>
 				</div>
 			</div>
 
@@ -497,6 +530,13 @@
 			<a href="tel:+84978713957">PHONE</a>
 		</div>
 	</footer>
+
+	<nav class="mobile-bottom-nav" aria-label="Mobile quick links">
+		<a href="#top"><span>ROOT</span></a>
+		<a href="#experience"><span>FILES</span></a>
+		<a href="#gallery"><span>LOGS</span></a>
+		<a href="#contact"><span>LINK</span></a>
+	</nav>
 </div>
 
 <style>
@@ -618,6 +658,7 @@
 
 	.brand,
 	.theme-toggle,
+	.secondary-cta,
 	.primary-cta,
 	.visual-caption,
 	.media-ref,
@@ -626,10 +667,19 @@
 	}
 
 	.brand {
+		display: inline-flex;
+		align-items: center;
+		gap: 10px;
 		font-family: 'Newsreader', serif;
 		font-style: italic;
 		font-size: 1.7rem;
 		color: var(--gold-strong);
+	}
+
+	.brand-icon {
+		font-family: 'Space Grotesk', monospace;
+		font-style: normal;
+		font-size: 0.95rem;
 	}
 
 	.nav {
@@ -656,6 +706,16 @@
 		display: flex;
 		align-items: center;
 		gap: 14px;
+	}
+
+	.menu-toggle {
+		display: none;
+		border: 0;
+		background: transparent;
+		color: var(--gold-strong);
+		font: inherit;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
 	}
 
 	.theme-toggle {
@@ -715,7 +775,7 @@
 
 	.hero-actions {
 		display: grid;
-		grid-template-columns: auto minmax(0, 22rem);
+		grid-template-columns: auto auto minmax(0, 22rem);
 		gap: 20px;
 		align-items: end;
 		margin-top: 34px;
@@ -739,6 +799,99 @@
 		background: var(--gold-strong);
 		color: #2f1d00;
 		font-weight: 700;
+	}
+
+	.secondary-cta {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 15px 22px;
+		border: 1px solid var(--surface-line);
+		color: var(--gold);
+	}
+
+	.mobile-profile,
+	.mobile-stats,
+	.mobile-bottom-nav {
+		display: none;
+	}
+
+	.mobile-profile {
+		align-items: start;
+		gap: 14px;
+		margin-top: 24px;
+		padding: 16px;
+		border-left: 2px solid var(--gold-strong);
+		background: var(--surface);
+	}
+
+	.mobile-profile img {
+		width: 52px;
+		height: 52px;
+		object-fit: cover;
+		filter: grayscale(1);
+	}
+
+	.mobile-profile strong,
+	.mobile-profile span {
+		display: block;
+		font-family: 'Space Grotesk', monospace;
+	}
+
+	.mobile-profile strong {
+		color: var(--gold-strong);
+		font-size: 0.9rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.mobile-profile span {
+		margin-top: 4px;
+		color: var(--text-muted);
+		font-size: 0.68rem;
+		letter-spacing: 0.12em;
+		text-transform: uppercase;
+	}
+
+	.mobile-profile p {
+		margin: 10px 0 0;
+		color: var(--text-muted);
+		font-size: 0.78rem;
+		line-height: 1.65;
+	}
+
+	.mobile-stats {
+		grid-template-columns: repeat(3, minmax(0, 1fr));
+		margin-top: 16px;
+		border-top: 1px solid var(--surface-line);
+		border-bottom: 1px solid var(--surface-line);
+	}
+
+	.mobile-stats div {
+		padding: 14px 10px;
+	}
+
+	.mobile-stats div + div {
+		border-left: 1px solid var(--surface-line);
+	}
+
+	.mobile-stats span,
+	.mobile-stats strong {
+		display: block;
+		font-family: 'Space Grotesk', monospace;
+		text-transform: uppercase;
+	}
+
+	.mobile-stats span {
+		color: var(--text-faint);
+		font-size: 0.58rem;
+		letter-spacing: 0.14em;
+	}
+
+	.mobile-stats strong {
+		margin-top: 6px;
+		font-size: 1.1rem;
+		color: var(--text);
 	}
 
 	.hero-visual {
@@ -1369,6 +1522,29 @@
 		gap: 18px;
 	}
 
+	.mobile-bottom-nav {
+		position: fixed;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		z-index: 40;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		height: 62px;
+		background: color-mix(in srgb, var(--surface) 94%, transparent);
+		backdrop-filter: blur(14px);
+		border-top: 1px solid var(--surface-line);
+	}
+
+	.mobile-bottom-nav a {
+		display: grid;
+		place-items: center;
+		color: var(--text-faint);
+		font-family: 'Space Grotesk', monospace;
+		font-size: 0.56rem;
+		letter-spacing: 0.18em;
+		text-transform: uppercase;
+	}
+
 	.reveal {
 		opacity: 0;
 		transform: translateY(18px);
@@ -1462,18 +1638,33 @@
 	@media (max-width: 640px) {
 		.page-shell {
 			width: min(100%, calc(100% - 20px));
+			padding-bottom: 84px;
 		}
 
 		.topbar {
 			gap: 14px;
+			grid-template-columns: minmax(0, 1fr) auto;
+			padding: 12px 0;
 		}
 
 		.brand {
 			font-size: 1.35rem;
 		}
 
+		.nav,
+		.system-status,
+		.theme-toggle {
+			display: none;
+		}
+
+		.menu-toggle {
+			display: inline-flex;
+		}
+
 		h1 {
-			font-size: clamp(3.3rem, 20vw, 5.2rem);
+			max-width: 9ch;
+			font-size: clamp(3rem, 13vw, 4.2rem);
+			line-height: 1;
 		}
 
 		h2 {
@@ -1482,6 +1673,42 @@
 
 		.section {
 			padding-top: 28px;
+		}
+
+		.hero {
+			gap: 18px;
+		}
+
+		.hero-visual {
+			display: none;
+		}
+
+		.mobile-profile {
+			display: grid;
+			grid-template-columns: auto minmax(0, 1fr);
+		}
+
+		.hero-actions {
+			grid-template-columns: 1fr;
+			gap: 12px;
+		}
+
+		.primary-cta,
+		.secondary-cta {
+			width: 100%;
+		}
+
+		.hero-actions p {
+			order: 3;
+			max-width: none;
+			padding-top: 14px;
+			border-top: 1px solid var(--surface-line);
+			font-size: 0.8rem;
+		}
+
+		.mobile-stats,
+		.mobile-bottom-nav {
+			display: grid;
 		}
 
 		.visual-meta,
@@ -1503,9 +1730,26 @@
 			padding: 20px;
 		}
 
+		.log-card {
+			background: transparent;
+			box-shadow: none;
+			border-right: 0;
+			border-left: 0;
+			padding-inline: 0;
+		}
+
+		.section-header-block {
+			padding-left: 14px;
+		}
+
 		.terminal-form input,
 		.terminal-form textarea {
 			font-size: 1rem;
+		}
+
+		.footer {
+			margin-top: 12px;
+			padding-bottom: 0;
 		}
 	}
 </style>
