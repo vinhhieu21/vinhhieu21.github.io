@@ -16,16 +16,7 @@
 			title: 'BANKING_SYSTEMS',
 			copy:
 				'Built enterprise microservices for CIMB Bank Thai digital applications, shipping investment features with Java 17, Spring Boot, MySQL, Redis, and AWS.',
-			images: [
-				{
-					src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuA1Aul3YGyI69X-xj_tkuwZ9fEI0cFxO3bJZTmWzFsTS8FjaaQ43Nz9ndtWqPRamJrJZIncpJdIgb8L6fQVbTLNUtxpyz-mgsmONuH-FeVjPRkCZCwIvwBmGrVPr1HIC9s9dOvsS1E8nUGP68A7DL6w0zWBdQ_I_SIScmS270AI_w7CurjXvi-bnhHfYvDugFTtesDbfTsYSQt6tFk0jNMzW0zpRpV2XFItmIIimJT2ulFx4F_SBnSI2CtIR-xAYlecOVNO5E1Gm4g',
-					alt: 'Mist on a forest path'
-				},
-				{
-					src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuAaDIiibtaPV9R9dooIFFgYa0uzEykJFQ0IUy-aCj4ULwL1Nx-OGEusvV8eHPpdjTJjWVEqQkRUF0RzwtTgb4_A8gtGaVSqFGjv-bhERpdHNn-2Z-uN76dB48Z99K_NSE2mkPSLntIUBOlxMsmCDvzD7Q9143pxWh3zGXPrrOanmOguBhQqEFJ4wpv4Bad7d4AI597r8um92O2gAIJOX4_tp4F0Lk3PUm2Yx9qc79L6uBKvA8r3ypjKUmwjJcg_bWzu2AA3ST34QmQ',
-					alt: 'Dark mountain silhouette'
-				}
-			]
+			diagram: true
 		},
 		{
 			status: '[ ACTIVE ]',
@@ -98,56 +89,25 @@
 
 	const compilers = ['JAVA', 'SPRING', 'GOLANG', 'PYTHON', 'AWS', 'K8S', 'DOCKER', 'GRPC'];
 
-	const gallery = [
-		{
-			ref: 'REF_ID: PX_772.01',
-			kind: 'wide',
-			src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuD8lC1kXU0Pi1fokdi9OFraHbQ6tZbafaX7D5MJfmYM3hMPlxMPAkWqlLGmW11GXOy2suncbQ3UdAHXWtAhsPWuV7RVffRaFwrzSjwILp8XhdQ8mLAf_lUJi7UhRs87IQUjOX6pRg_slyIy1qM2_ZslJu9Cb-jicmCx82i5K4mTbSPqAKBrhMQoc7ji303qGhycbtUVrbMi3L_-DHXNXFuoePECKTul9i-3cdYq--ULKc51t4gao3gSmLkh3oGrHREjSX8FJsa23oo',
-			alt: 'High contrast black and white street corner with long shadows',
-			meta: [
-				['LENS_OPTIC', 'SUMMICRON 35MM F2'],
-				['EXPOSURE', '1/500 @ F/8.0'],
-				['SUBSTRATE', 'KODAK TRI-X 400'],
-				['GEOSPATIAL', 'BERLIN_MITE // 52.5200° N']
-			]
-		},
-		{
-			ref: 'REF_ID: PX_772.02',
-			kind: 'portrait',
-			src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBONdlyvfZzQPwVB_Yvzm1rgCSsidOOXZl_k99_0t_bd0itR6pJ26tc2lBpqoiih22OyliS1uDBdyhk0soCNvMMAiXZChr8K83NtfvAxf-5681-sESpvmBq1rMPahBtLu188bLgTCozruk4MLlh3tvbjyMaQwJ1gNnWvSSAXYzqQMNYIcwEtip9QXKKT22IN3vIsbNO48ZKrlWSwDnxrzK3Luliw1Towpkl9GTNmsE3D7fqrrjuXs8JkLvJj3xMg94O2RfNO7igIx0',
-			alt: 'Monochrome geometric skyscraper architectural detail',
-			meta: [
-				['SUBSTRATE', 'ILFORD HP5 PLUS'],
-				['COORDINATES', 'TOKYO_SHIBUYA']
-			]
-		},
-		{
-			kind: 'square',
-			src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBv6cWDTRJnobO6ploMdMhDdD51-ToZ27RPiojXVY57WEgC_nGxEP0HprSceQ1bM4FyhzywKasOCoZ9d8js8ne5y2WNaXz2Wrzo-2ACpPEC0USffyfsBhLe2YM5dYOu6vlIrdOaTf8Z8pmlfMR-oXH0A06Rt_5-2Uf_52NA1wz4woQleFJyOGlX1EmmHl7IcRcf6KI-of9IqdeDJTkSg5adw_h8Uz6qUoYrNRqb_MheINoMj4FrI_zHDDKzYFYHN32PKfx-Iscd4CU',
-			alt: 'Blurred motion of a person crossing a high contrast street',
-			note:
-				'Subject captured in transit. Motion blur intentional to emphasize the kinetic decay of the urban environment. Film pushed +2 stops in chemical processing.'
-		},
-		{
-			kind: 'panorama',
-			src: 'https://lh3.googleusercontent.com/aida-public/AB6AXuBzwaGwNEQAX2U0Q1DbcIXWEYZU1uwSWYq94KiazDFRalhfChjn2zAMeB09VbB369hHheCvTl9cipu9wPlpL5imEVsPpnraZTl1b8UUX8HlogcfBVInzUIN1Agio2r0cx-4gn1kh1w4s_hIxwC12KfVHYeZvKclAMbkiqeF6-qqAaCxEvDZLNzYIqgduJbBg7cmQNOAgfZu3ZMe1bbUkz4VOdHn5hMxHeni6qmv-wq2ChVdBNck0yccHTrcINi1GxJuvflscoTGRvg',
-			alt: 'Wide shot of an empty brutalist concrete plaza in black and white',
-			badges: ['LOCKED', 'VERIFIED_DATA'],
-			stats: [
-				['SHUTTER', '1/1000s'],
-				['APERTURE', 'f/11'],
-				['FILM_ISO', '400']
-			]
-		}
+	const navLinks = [
+		{ href: '#top', label: 'HOME' },
+		{ href: '#experience', label: 'EXPERIENCE' },
+		{ href: '#signals', label: 'SIGNALS' },
+		{ href: '#contact', label: 'CONTACT' }
 	];
 
 	const externalNodes = [
-		{ label: '/social/github', href: 'https://github.com/vinhhieu21' },
+		{ label: '/social/github', href: 'https://github.com/vinhhieu21', external: true },
 		{ label: '/mail/buivinhhieu217', href: 'mailto:buivinhhieu217@gmail.com' },
 		{ label: '/call/+84_978713957', href: 'tel:+84978713957' }
 	];
 
 	let theme = $state('dark');
+	let menuOpen = $state(false);
+
+	let contactName = $state('');
+	let contactEmail = $state('');
+	let contactMessage = $state('');
 
 	/** @param {string} nextTheme */
 	function applyTheme(nextTheme) {
@@ -167,6 +127,16 @@
 		applyTheme(theme === 'dark' ? 'light' : 'dark');
 	}
 
+	/** @param {SubmitEvent} event */
+	function submitContact(event) {
+		event.preventDefault();
+		const subject = encodeURIComponent(`Website contact — ${contactName || 'visitor'}`);
+		const body = encodeURIComponent(
+			`${contactMessage}\n\n— ${contactName}${contactEmail ? ` (${contactEmail})` : ''}`
+		);
+		window.location.href = `mailto:buivinhhieu217@gmail.com?subject=${subject}&body=${body}`;
+	}
+
 	onMount(() => {
 		const currentTheme =
 			document.documentElement.getAttribute('data-theme') ||
@@ -174,6 +144,28 @@
 			'dark';
 		document.body.setAttribute('data-theme', currentTheme);
 		theme = currentTheme;
+
+		const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (reduceMotion || !('IntersectionObserver' in window)) return;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				for (const entry of entries) {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('reveal-visible');
+						observer.unobserve(entry.target);
+					}
+				}
+			},
+			{ threshold: 0.1, rootMargin: '0px 0px -40px' }
+		);
+
+		for (const node of document.querySelectorAll('[data-reveal]')) {
+			node.classList.add('reveal-init');
+			observer.observe(node);
+		}
+
+		return () => observer.disconnect();
 	});
 </script>
 
@@ -192,28 +184,43 @@
 </svelte:head>
 
 <div class="page-shell">
-	<header class="topbar reveal">
+	<header class="topbar">
 		<a class="brand" href="#top" aria-label="Go to top">
 			<span class="brand-icon">⌘</span>
 			<span>[HIEU_BUI_VINH]</span>
 		</a>
 		<nav class="nav" aria-label="Primary">
-			<a href="#top">HOME</a>
-			<a href="#experience">EXPERIENCE</a>
-			<a href="#gallery">GALLERY</a>
-			<a href="#contact">CONTACT</a>
+			{#each navLinks as link}
+				<a href={link.href}>{link.label}</a>
+			{/each}
 		</nav>
 		<div class="toolbar">
 			<span class="system-status">SYSTEM_STATUS: ONLINE</span>
-			<button class="menu-toggle" type="button" aria-label="Open section menu">MENU</button>
+			<button
+				class="menu-toggle"
+				type="button"
+				aria-label="Toggle section menu"
+				aria-expanded={menuOpen}
+				aria-controls="menu-panel"
+				onclick={() => (menuOpen = !menuOpen)}
+			>
+				{menuOpen ? 'CLOSE' : 'MENU'}
+			</button>
 			<button class="theme-toggle" type="button" aria-label="Toggle color theme" onclick={toggleTheme}>
-				{theme === 'dark' ? 'SOLAR' : 'RITUAL'}
+				{theme === 'dark' ? 'LIGHT_MODE' : 'DARK_MODE'}
 			</button>
 		</div>
+		{#if menuOpen}
+			<nav class="menu-panel" id="menu-panel" aria-label="Section menu">
+				{#each navLinks as link}
+					<a href={link.href} onclick={() => (menuOpen = false)}>{link.label}</a>
+				{/each}
+			</nav>
+		{/if}
 	</header>
 
 	<main id="top">
-		<section class="hero section reveal delay-1">
+		<section class="hero section" data-reveal>
 			<div class="hero-copy">
 				<div class="terminal-line">
 					<span class="status-dot"></span>
@@ -221,10 +228,7 @@
 				</div>
 				<h1>BUILDING RELIABLE BACKEND SYSTEMS FOR REAL PRODUCTS.</h1>
 				<div class="mobile-profile">
-					<img
-						src="https://lh3.googleusercontent.com/aida-public/AB6AXuAYTZCJ01sIzz6NB7G0QlbokOrbJN36IhnAsxyEURvRQlrCCKUFzCKQIh3W0xrIIafBCIJzMXJ7oYPCoSkrbT9LetQkXq3Wpi3-dIsXaBVBPsBBmKzaIaMyuAefGq5acSLACcdexvPV3Hvf1Ucx35QE-Cu6Hj8nfcE36QLV1K5UjvVmidzeNPhI6wh6NepxeBmla5ONGHGaSh0-Wozr0HGrTiuVIODru2gfHZ-MV_d56YAaA3IWR92UGzFClY3U36tEAMVwwIOkdl8"
-						alt="Portrait of Hieu Bui Vinh"
-					/>
+					<div class="monogram" aria-hidden="true">HBV</div>
 					<div>
 						<strong>HIEU_BUI_VINH</strong>
 						<span>Java Backend Engineer / Distributed Systems</span>
@@ -261,23 +265,67 @@
 
 			<aside class="hero-visual">
 				<div class="hero-asset">
-					<div class="visual-ref">REF_ID: #8821-X</div>
-					<img
-						src="https://lh3.googleusercontent.com/aida-public/AB6AXuDPkkyuJRviz1ZWcNJFjuSICsn2UCHJfRvFPWmVxVSACEEH6xPj8wEntP05Taf3xtOdwYsfBEZFmqPjIgF29CkdBcmlcYN4xAlGAp6nI98N_5cRkEf8_3PPHzRN6S6tdB1qyJGCUEIhXpstwSf1vViWHi8c74wBUu1gtWA5j6uDhAATs4VDSSylFjWG1ZN_ndB2xk-sSyYhgHkag_nTjNkG6eSHOQli0OoQ9umQXdwq0euJneolmUxkYACh139alww09_C24OzE4Q8"
-						alt="Cyberpunk city street at night"
-					/>
+					<div class="visual-ref">TOPOLOGY: LIVE_BACKEND</div>
+					<svg
+						class="diagram hero-diagram"
+						viewBox="0 0 400 500"
+						role="img"
+						aria-label="Diagram of a distributed backend: API gateway routing to services, an event bus, workers, and data stores"
+					>
+						<defs>
+							<pattern id="grid-hero" width="20" height="20" patternUnits="userSpaceOnUse">
+								<path class="d-gridline" d="M 20 0 L 0 0 0 20" fill="none" />
+							</pattern>
+						</defs>
+						<rect width="400" height="500" fill="url(#grid-hero)" opacity="0.45" />
+
+						<rect class="d-node accent" x="130" y="40" width="140" height="40" />
+						<text class="d-label" x="200" y="65" text-anchor="middle">API_GATEWAY</text>
+						<circle class="d-dot" cx="258" cy="50" r="3" />
+
+						<path class="d-line" d="M200 80 V110 M80 110 H320 M80 110 V140 M200 110 V140 M320 110 V140" />
+
+						<rect class="d-node" x="30" y="140" width="100" height="40" />
+						<text class="d-label small" x="80" y="164" text-anchor="middle">SVC_TOURNEY</text>
+						<rect class="d-node" x="150" y="140" width="100" height="40" />
+						<text class="d-label small" x="200" y="164" text-anchor="middle">SVC_BETS</text>
+						<rect class="d-node" x="270" y="140" width="100" height="40" />
+						<text class="d-label small" x="320" y="164" text-anchor="middle">SVC_CONFIG</text>
+
+						<path class="d-flow" d="M80 180 V230" />
+						<path class="d-flow" d="M200 180 V230" />
+						<path class="d-flow" d="M320 180 V230" />
+
+						<rect class="d-bus" x="40" y="230" width="320" height="36" />
+						<text class="d-label" x="200" y="253" text-anchor="middle">EVENT_BUS // KAFKA</text>
+
+						<path class="d-line" d="M120 266 V300 M280 266 V300" />
+						<rect class="d-node" x="60" y="300" width="120" height="40" />
+						<text class="d-label small" x="120" y="324" text-anchor="middle">WORKERS</text>
+						<rect class="d-node" x="220" y="300" width="120" height="40" />
+						<text class="d-label small" x="280" y="324" text-anchor="middle">SETTLEMENT</text>
+
+						<path class="d-line dashed" d="M120 340 V380 M280 340 V380" />
+						<rect class="d-node" x="60" y="380" width="120" height="40" />
+						<text class="d-label small" x="120" y="404" text-anchor="middle">MYSQL</text>
+						<rect class="d-node" x="220" y="380" width="120" height="40" />
+						<text class="d-label small" x="280" y="404" text-anchor="middle">REDIS</text>
+
+						<text class="d-label small" x="30" y="464">UPLINK: AWS // AP_SOUTHEAST</text>
+						<text class="d-label green" x="30" y="482">STATUS: OPERATIONAL</text>
+					</svg>
 					<div class="visual-meta">
-						<div><span>SHUTTER</span><strong>1/250s</strong></div>
-						<div><span>APERTURE</span><strong>f/1.4</strong></div>
-						<div><span>ISO</span><strong>400</strong></div>
-						<div><span>LENS</span><strong>35MM_PRIME</strong></div>
+						<div><span>RUNTIME</span><strong>JAVA_17</strong></div>
+						<div><span>FRAMEWORK</span><strong>SPRING</strong></div>
+						<div><span>CLOUD</span><strong>AWS</strong></div>
+						<div><span>PLATFORM</span><strong>K8S</strong></div>
 					</div>
 				</div>
 				<p class="visual-caption">CURRENT_STACK: JAVA // SPRING // AWS // MICROSERVICES</p>
 			</aside>
 		</section>
 
-		<section class="logs section reveal delay-2">
+		<section class="logs section" data-reveal>
 			<div class="section-head">
 				<h2>SELECTED_LOGS</h2>
 				<span>FILTER: ALL_ASSETS</span>
@@ -291,11 +339,28 @@
 							<span>{log.index}</span>
 						</div>
 
-						{#if log.images}
-							<div class="log-images">
-								{#each log.images as image}
-									<img src={image.src} alt={image.alt} />
-								{/each}
+						{#if log.diagram}
+							<div class="log-diagram">
+								<svg
+									class="diagram"
+									viewBox="0 0 480 160"
+									role="img"
+									aria-label="Banking request flow: channels through an open API to a ledger service, with RabbitMQ handling async work"
+								>
+									<rect class="d-node" x="20" y="50" width="100" height="40" />
+									<text class="d-label small" x="70" y="74" text-anchor="middle">CHANNELS</text>
+									<path class="d-flow" d="M120 70 H160" />
+									<rect class="d-node accent" x="160" y="50" width="110" height="40" />
+									<text class="d-label small" x="215" y="74" text-anchor="middle">OPEN_API</text>
+									<circle class="d-dot" cx="260" cy="60" r="3" />
+									<path class="d-line" d="M270 70 H310" />
+									<rect class="d-node" x="310" y="50" width="120" height="40" />
+									<text class="d-label small" x="370" y="74" text-anchor="middle">LEDGER_SVC</text>
+									<path class="d-line dashed" d="M370 90 V118" />
+									<rect class="d-bus" x="270" y="118" width="180" height="26" />
+									<text class="d-label small" x="360" y="135" text-anchor="middle">RABBITMQ</text>
+									<text class="d-label small" x="20" y="140">FLOW: LICENSE_REQUESTS</text>
+								</svg>
 							</div>
 						{/if}
 
@@ -314,7 +379,7 @@
 			</div>
 		</section>
 
-		<section class="experience section reveal delay-2" id="experience">
+		<section class="experience section" data-reveal id="experience">
 			<div class="section-header-block">
 				<span class="kicker">CAREER_TIMELINE // 2020_TO_PRESENT</span>
 				<h2>EXEC_PROFESSIONAL_HISTORY</h2>
@@ -355,21 +420,21 @@
 							<span>ACTIVE</span>
 						</div>
 						<div class="meter-list">
-								{#each diagnostics as stat}
-									<div class="meter">
-										<div class="meter-label">
-											<span>{stat.label}</span>
-											<span>{stat.value}</span>
-										</div>
-										<div class="meter-track">
-											<div class="meter-fill" style={`width: ${stat.width}`}></div>
-										</div>
+							{#each diagnostics as stat}
+								<div class="meter">
+									<div class="meter-label">
+										<span>{stat.label}</span>
+										<span>{stat.value}</span>
 									</div>
-								{/each}
+									<div class="meter-track">
+										<div class="meter-fill" style={`width: ${stat.width}`}></div>
+									</div>
+								</div>
+							{/each}
 						</div>
 
 						<div class="compiler-cluster">
-								<div class="cluster-label">Core_Stack</div>
+							<div class="cluster-label">Core_Stack</div>
 							<div class="chip-row">
 								{#each compilers as compiler}
 									<span>{compiler}</span>
@@ -381,7 +446,7 @@
 			</div>
 		</section>
 
-		<section class="gallery section reveal delay-3" id="gallery">
+		<section class="gallery section" data-reveal id="signals">
 			<div class="section-header-block gallery-intro">
 				<span class="kicker">PROFILE_SIGNAL // CORE_CAPABILITIES</span>
 				<h2>ENGINEERING <em>SIGNALS</em></h2>
@@ -400,66 +465,208 @@
 			<div class="gallery-grid">
 				<article class="gallery-card gallery-wide">
 					<div class="media-frame">
-						<img src={gallery[0].src} alt={gallery[0].alt} />
-						<span class="media-ref">{gallery[0].ref}</span>
+						<svg
+							class="diagram"
+							viewBox="0 0 640 360"
+							role="img"
+							aria-label="Microservice architecture diagram: clients through a gateway to auth, game, and payment services backed by MySQL and Redis"
+						>
+							<text class="d-label small" x="30" y="34">SIG_01 // SERVICE_TOPOLOGY</text>
+
+							<rect class="d-node" x="30" y="158" width="100" height="44" />
+							<text class="d-label small" x="80" y="184" text-anchor="middle">CLIENTS</text>
+
+							<path class="d-flow" d="M130 180 H170" />
+
+							<rect class="d-node accent" x="170" y="158" width="110" height="44" />
+							<text class="d-label small" x="225" y="184" text-anchor="middle">GATEWAY</text>
+							<circle class="d-dot" cx="270" cy="168" r="3" />
+
+							<path class="d-line" d="M280 180 H320 M320 62 V298 M320 62 H360 M320 180 H360 M320 298 H360" />
+							<text class="d-label small" x="292" y="170">REST</text>
+
+							<rect class="d-node" x="360" y="40" width="120" height="44" />
+							<text class="d-label small" x="420" y="66" text-anchor="middle">AUTH_SVC</text>
+							<rect class="d-node" x="360" y="158" width="120" height="44" />
+							<text class="d-label small" x="420" y="184" text-anchor="middle">GAME_SVC</text>
+							<rect class="d-node" x="360" y="276" width="120" height="44" />
+							<text class="d-label small" x="420" y="302" text-anchor="middle">PAY_SVC</text>
+
+							<path class="d-line dashed" d="M480 62 H512 V118 H540 M480 180 H512 M512 180 V242 H540 M480 298 H512 V242" />
+							<text class="d-label small" x="494" y="106">GRPC</text>
+
+							<rect class="d-node" x="540" y="96" width="80" height="44" />
+							<text class="d-label small" x="580" y="122" text-anchor="middle">MYSQL</text>
+							<rect class="d-node" x="540" y="220" width="80" height="44" />
+							<text class="d-label small" x="580" y="246" text-anchor="middle">REDIS</text>
+						</svg>
+						<span class="media-ref">SIG_01 // ARCHITECTURE</span>
 					</div>
 					<div class="meta-grid four">
-						{#each gallery[0].meta as item}
-							<div>
-								<span>{item[0]}</span>
-								<strong>{item[1]}</strong>
-							</div>
-						{/each}
+						<div><span>ENTRY</span><strong>API_GATEWAY</strong></div>
+						<div><span>PROTOCOLS</span><strong>REST // GRPC</strong></div>
+						<div><span>SERVICES</span><strong>SPRING_BOOT</strong></div>
+						<div><span>DATA</span><strong>MYSQL // REDIS</strong></div>
 					</div>
 				</article>
 
 				<article class="gallery-card gallery-portrait">
-					<div class="media-frame portrait">
-						<img src={gallery[1].src} alt={gallery[1].alt} />
-						<span class="media-ref right">{gallery[1].ref}</span>
+					<div class="media-frame">
+						<svg
+							class="diagram"
+							viewBox="0 0 360 480"
+							role="img"
+							aria-label="Event streaming diagram: producers publishing to Kafka partitions, consumed by a consumer group with a dead letter queue"
+						>
+							<rect class="d-node" x="100" y="40" width="160" height="40" />
+							<text class="d-label small" x="180" y="64" text-anchor="middle">PRODUCERS</text>
+
+							<path class="d-flow" d="M180 80 V128" />
+							<text class="d-label small" x="60" y="120">TOPIC: TXN_EVENTS</text>
+
+							<rect class="d-bus" x="60" y="128" width="240" height="28" />
+							<text class="d-label small" x="74" y="146">P0</text>
+							<rect class="d-bar" x="150" y="138" width="8" height="8" />
+							<rect class="d-bar" x="190" y="138" width="8" height="8" />
+							<rect class="d-bar" x="240" y="138" width="8" height="8" />
+
+							<rect class="d-bus" x="60" y="168" width="240" height="28" />
+							<text class="d-label small" x="74" y="186">P1</text>
+							<rect class="d-bar" x="120" y="178" width="8" height="8" />
+							<rect class="d-bar" x="205" y="178" width="8" height="8" />
+
+							<rect class="d-bus" x="60" y="208" width="240" height="28" />
+							<text class="d-label small" x="74" y="226">P2</text>
+							<rect class="d-bar" x="100" y="218" width="8" height="8" />
+							<rect class="d-bar" x="170" y="218" width="8" height="8" />
+							<rect class="d-bar" x="250" y="218" width="8" height="8" />
+
+							<path class="d-flow" d="M180 236 V290" />
+
+							<rect class="d-node" x="60" y="290" width="240" height="86" />
+							<text class="d-label small" x="180" y="310" text-anchor="middle">CONSUMER_GROUP</text>
+							<rect class="d-node" x="80" y="322" width="52" height="38" />
+							<text class="d-label small" x="106" y="345" text-anchor="middle">C0</text>
+							<rect class="d-node" x="154" y="322" width="52" height="38" />
+							<text class="d-label small" x="180" y="345" text-anchor="middle">C1</text>
+							<rect class="d-node" x="228" y="322" width="52" height="38" />
+							<text class="d-label small" x="254" y="345" text-anchor="middle">C2</text>
+
+							<path class="d-line dashed" d="M245 376 V410" />
+							<rect class="d-node" x="190" y="410" width="110" height="36" />
+							<text class="d-label small" x="245" y="432" text-anchor="middle">DLQ</text>
+
+							<text class="d-label green" x="60" y="466">PATTERN: SAGA // AT_LEAST_ONCE</text>
+						</svg>
+						<span class="media-ref right">SIG_02 // EVENTS</span>
 					</div>
 					<div class="meta-stack">
-						{#each gallery[1].meta as item}
-							<div>
-								<span>{item[0]}</span>
-								<strong>{item[1]}</strong>
-							</div>
-						{/each}
+						<div><span>BROKERS</span><strong>KAFKA // RABBITMQ</strong></div>
+						<div><span>PATTERNS</span><strong>SAGA // EVENT_DRIVEN</strong></div>
 					</div>
 				</article>
 
 				<article class="gallery-card gallery-square">
-					<div class="media-frame square">
-						<img src={gallery[2].src} alt={gallery[2].alt} />
+					<div class="media-frame">
+						<svg
+							class="diagram"
+							viewBox="0 0 400 400"
+							role="img"
+							aria-label="Observability diagram: latency trace sparkline with percentile meters"
+						>
+							<text class="d-label small" x="40" y="60">SIG_03 // LATENCY_TRACE</text>
+							<circle class="d-dot" cx="330" cy="56" r="3" />
+							<text class="d-label green" x="342" y="60">LIVE</text>
+
+							<path
+								class="d-area"
+								d="M40 230 L80 210 L120 225 L160 190 L200 205 L240 160 L280 185 L320 150 L360 170 L360 260 L40 260 Z"
+							/>
+							<polyline
+								class="d-spark"
+								points="40,230 80,210 120,225 160,190 200,205 240,160 280,185 320,150 360,170"
+							/>
+							<path class="d-line" d="M40 260 H360" />
+
+							<text class="d-label small" x="40" y="304">P50</text>
+							<rect class="d-track" x="90" y="296" width="270" height="6" />
+							<rect class="d-bar" x="90" y="296" width="120" height="6" />
+
+							<text class="d-label small" x="40" y="334">P95</text>
+							<rect class="d-track" x="90" y="326" width="270" height="6" />
+							<rect class="d-bar" x="90" y="326" width="190" height="6" />
+
+							<text class="d-label small" x="40" y="364">P99</text>
+							<rect class="d-track" x="90" y="356" width="270" height="6" />
+							<rect class="d-bar" x="90" y="356" width="240" height="6" />
+						</svg>
 					</div>
 					<div class="annotation">
 						<span>ANNOTATION</span>
-						<p>{gallery[2].note}</p>
+						<p>
+							Observability wired into every service: distributed traces, latency percentiles,
+							dashboards, and alerting across Datadog, CloudWatch, Grafana, and Zipkin.
+						</p>
 					</div>
 				</article>
 
 				<article class="gallery-card gallery-panorama">
-					<div class="media-frame panorama">
-						<img src={gallery[3].src} alt={gallery[3].alt} />
+					<div class="media-frame">
+						<svg
+							class="diagram"
+							viewBox="0 0 630 270"
+							role="img"
+							aria-label="Delivery pipeline diagram: commit, build, test, deploy, and observe stages"
+						>
+							<text class="d-label small" x="15" y="40">SIG_04 // DELIVERY_PIPELINE</text>
+
+							<rect class="d-node" x="15" y="115" width="90" height="40" />
+							<text class="d-label small" x="60" y="139" text-anchor="middle">COMMIT</text>
+							<text class="d-label green" x="60" y="100" text-anchor="middle">✓</text>
+
+							<path class="d-flow" d="M105 135 H142" />
+
+							<rect class="d-node" x="142" y="115" width="90" height="40" />
+							<text class="d-label small" x="187" y="139" text-anchor="middle">BUILD</text>
+							<text class="d-label green" x="187" y="100" text-anchor="middle">✓</text>
+
+							<path class="d-flow" d="M232 135 H269" />
+
+							<rect class="d-node" x="269" y="115" width="90" height="40" />
+							<text class="d-label small" x="314" y="139" text-anchor="middle">TEST</text>
+							<text class="d-label green" x="314" y="100" text-anchor="middle">✓</text>
+
+							<path class="d-flow" d="M359 135 H396" />
+
+							<rect class="d-node" x="396" y="115" width="90" height="40" />
+							<text class="d-label small" x="441" y="139" text-anchor="middle">DEPLOY</text>
+							<text class="d-label green" x="441" y="100" text-anchor="middle">✓</text>
+
+							<path class="d-flow" d="M486 135 H523" />
+
+							<rect class="d-node accent" x="523" y="115" width="90" height="40" />
+							<text class="d-label small" x="568" y="139" text-anchor="middle">OBSERVE</text>
+							<circle class="d-dot" cx="604" cy="124" r="3" />
+
+							<path class="d-line" d="M15 200 H613 M15 200 V206 M135 200 V206 M255 200 V206 M375 200 V206 M495 200 V206 M613 200 V206" />
+							<text class="d-label small" x="15" y="234">ZERO_DOWNTIME_ROLLOUT // ARGOCD</text>
+							<text class="d-label small" x="613" y="234" text-anchor="end">K8S_CLUSTER: PROD</text>
+						</svg>
 						<div class="badge-row">
-							{#each gallery[3].badges as badge}
-								<span>{badge}</span>
-							{/each}
+							<span>AUTOMATED</span>
+							<span>GITOPS</span>
 						</div>
 					</div>
 					<div class="meta-grid three">
-						{#each gallery[3].stats as item}
-							<div>
-								<span>{item[0]}</span>
-								<strong>{item[1]}</strong>
-							</div>
-						{/each}
+						<div><span>CI</span><strong>JENKINS</strong></div>
+						<div><span>CD</span><strong>ARGOCD</strong></div>
+						<div><span>RUNTIME</span><strong>KUBERNETES</strong></div>
 					</div>
 				</article>
 			</div>
 		</section>
 
-		<section class="contact section reveal delay-4" id="contact">
+		<section class="contact section" data-reveal id="contact">
 			<div class="section-header-block">
 				<span class="kicker">SECURE_UPLINK_ESTABLISHED // CONTACT_NODE</span>
 				<h2>LET'S CONNECT</h2>
@@ -468,20 +675,31 @@
 			<div class="contact-grid">
 				<div class="contact-panel">
 					<div class="contact-ref">COMM_INTERFACE_v4.2</div>
-					<form class="terminal-form">
+					<form class="terminal-form" onsubmit={submitContact}>
 						<label>
 							<span>&gt; ENTER_IDENTITY_STRING</span>
-							<input type="text" placeholder="YOUR_NAME" />
+							<input type="text" placeholder="YOUR_NAME" bind:value={contactName} required />
 						</label>
 						<label>
 							<span>&gt; RETURN_PATH</span>
-							<input type="email" placeholder="YOUR_EMAIL@DOMAIN.COM" />
+							<input
+								type="email"
+								placeholder="YOUR_EMAIL@DOMAIN.COM"
+								bind:value={contactEmail}
+								required
+							/>
 						</label>
 						<label>
 							<span>&gt; TRANSMISSION_BODY</span>
-							<textarea rows="6" placeholder="PROJECT_SCOPE_OR_MESSAGE..."></textarea>
+							<textarea
+								rows="6"
+								placeholder="PROJECT_SCOPE_OR_MESSAGE..."
+								bind:value={contactMessage}
+								required
+							></textarea>
 						</label>
 						<button type="submit">EXECUTE_SEND</button>
+						<p class="form-hint">ROUTE: OPENS_YOUR_MAIL_CLIENT // NO_DATA_STORED</p>
 					</form>
 				</div>
 
@@ -502,7 +720,13 @@
 						<h3 class="side-title">EXTERNAL_NODES</h3>
 						<div class="external-list">
 							{#each externalNodes as node}
-								<a href={node.href}>{node.label}</a>
+								<a
+									href={node.href}
+									target={node.external ? '_blank' : undefined}
+									rel={node.external ? 'noreferrer' : undefined}
+								>
+									{node.label}
+								</a>
 							{/each}
 						</div>
 					</div>
@@ -534,7 +758,7 @@
 	<nav class="mobile-bottom-nav" aria-label="Mobile quick links">
 		<a href="#top"><span>ROOT</span></a>
 		<a href="#experience"><span>FILES</span></a>
-		<a href="#gallery"><span>LOGS</span></a>
+		<a href="#signals"><span>LOGS</span></a>
 		<a href="#contact"><span>LINK</span></a>
 	</nav>
 </div>
@@ -603,9 +827,25 @@
 		text-decoration: none;
 	}
 
-	:global(img) {
-		display: block;
-		max-width: 100%;
+	:global(::selection) {
+		background: var(--gold-strong);
+		color: #2f1d00;
+	}
+
+	:global(:focus-visible) {
+		outline: 2px solid var(--gold-strong);
+		outline-offset: 2px;
+	}
+
+	:global(.reveal-init) {
+		opacity: 0;
+		transform: translateY(18px);
+		transition: opacity 650ms ease, transform 650ms ease;
+	}
+
+	:global(.reveal-visible) {
+		opacity: 1;
+		transform: none;
 	}
 
 	.page-shell {
@@ -646,11 +886,13 @@
 	.annotation span,
 	.contact-ref,
 	.terminal-form label span,
+	.form-hint,
 	.footer,
 	.external-list a,
 	.status-list span,
 	.status-list strong,
-	.collection-count span {
+	.collection-count span,
+	.menu-panel a {
 		font-size: 0.72rem;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
@@ -716,6 +958,35 @@
 		font: inherit;
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
+		cursor: pointer;
+	}
+
+	.menu-panel {
+		position: absolute;
+		top: 100%;
+		left: 0;
+		right: 0;
+		z-index: 40;
+		display: grid;
+		background: var(--surface);
+		border: 1px solid var(--surface-line);
+		box-shadow: var(--shadow);
+	}
+
+	.menu-panel a {
+		padding: 15px 18px;
+		color: var(--text-muted);
+		border-bottom: 1px solid var(--surface-line);
+	}
+
+	.menu-panel a:last-child {
+		border-bottom: 0;
+	}
+
+	.menu-panel a:hover,
+	.menu-panel a:focus-visible {
+		color: var(--gold);
+		background: var(--surface-low);
 	}
 
 	.theme-toggle {
@@ -724,10 +995,16 @@
 		color: var(--gold-strong);
 		padding: 8px 10px;
 		cursor: pointer;
+		transition: border-color 220ms ease;
+	}
+
+	.theme-toggle:hover {
+		border-color: var(--gold-strong);
 	}
 
 	.section {
 		padding: 34px 0 18px;
+		scroll-margin-top: 84px;
 	}
 
 	.hero {
@@ -751,6 +1028,7 @@
 		height: 8px;
 		background: currentColor;
 		box-shadow: 0 0 12px currentColor;
+		animation: pulse 2.4s ease-in-out infinite;
 	}
 
 	h1,
@@ -799,6 +1077,11 @@
 		background: var(--gold-strong);
 		color: #2f1d00;
 		font-weight: 700;
+		transition: filter 220ms ease;
+	}
+
+	.primary-cta:hover {
+		filter: brightness(1.08);
 	}
 
 	.secondary-cta {
@@ -808,6 +1091,11 @@
 		padding: 15px 22px;
 		border: 1px solid var(--surface-line);
 		color: var(--gold);
+		transition: border-color 220ms ease;
+	}
+
+	.secondary-cta:hover {
+		border-color: var(--gold-strong);
 	}
 
 	.mobile-profile,
@@ -825,11 +1113,17 @@
 		background: var(--surface);
 	}
 
-	.mobile-profile img {
+	.monogram {
 		width: 52px;
 		height: 52px;
-		object-fit: cover;
-		filter: grayscale(1);
+		display: grid;
+		place-items: center;
+		border: 1px solid var(--surface-line);
+		background: var(--surface-low);
+		color: var(--gold-strong);
+		font-family: 'Newsreader', serif;
+		font-style: italic;
+		font-size: 1.25rem;
 	}
 
 	.mobile-profile strong,
@@ -915,18 +1209,105 @@
 		overflow: hidden;
 	}
 
-	.hero-asset img,
-	.media-frame img,
-	.log-images img {
+	.diagram {
+		display: block;
 		width: 100%;
-		height: 100%;
-		object-fit: cover;
-		filter: grayscale(1) contrast(1.15);
+		height: auto;
+		background: var(--surface-low);
 	}
 
-	.hero-asset img {
-		aspect-ratio: 4 / 5;
-		opacity: 0.84;
+	.d-gridline {
+		stroke: var(--surface-line);
+		stroke-width: 1;
+	}
+
+	.d-node {
+		fill: var(--surface);
+		stroke: var(--surface-line);
+	}
+
+	.d-node.accent {
+		stroke: var(--gold-strong);
+	}
+
+	.d-bus {
+		fill: var(--surface-mid);
+		stroke: var(--surface-line);
+	}
+
+	.d-label {
+		fill: var(--text-muted);
+		font-family: 'Space Grotesk', monospace;
+		font-size: 12px;
+		letter-spacing: 0.08em;
+	}
+
+	.d-label.small {
+		font-size: 10px;
+		fill: var(--text-faint);
+	}
+
+	.d-label.green {
+		fill: var(--green);
+	}
+
+	.d-line {
+		stroke: var(--text-faint);
+		stroke-width: 1;
+		opacity: 0.55;
+		fill: none;
+	}
+
+	.d-line.dashed {
+		stroke-dasharray: 3 5;
+	}
+
+	.d-flow {
+		stroke: var(--gold-strong);
+		stroke-width: 1.5;
+		fill: none;
+		stroke-dasharray: 5 7;
+		animation: flow 2.4s linear infinite;
+	}
+
+	.d-dot {
+		fill: var(--green);
+		animation: pulse 2s ease-in-out infinite;
+	}
+
+	.d-bar {
+		fill: var(--gold-strong);
+	}
+
+	.d-track {
+		fill: var(--surface-high);
+	}
+
+	.d-area {
+		fill: var(--gold-strong);
+		opacity: 0.12;
+	}
+
+	.d-spark {
+		stroke: var(--gold-strong);
+		stroke-width: 1.5;
+		fill: none;
+	}
+
+	@keyframes flow {
+		to {
+			stroke-dashoffset: -48;
+		}
+	}
+
+	@keyframes pulse {
+		0%,
+		100% {
+			opacity: 1;
+		}
+		50% {
+			opacity: 0.35;
+		}
 	}
 
 	.visual-ref,
@@ -934,10 +1315,14 @@
 		position: absolute;
 		top: 16px;
 		left: 16px;
+		z-index: 1;
 		padding: 6px 10px;
 		border: 1px solid var(--surface-line);
 		background: color-mix(in srgb, var(--bg) 84%, transparent);
 		color: var(--text-muted);
+		font-size: 0.62rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
 	}
 
 	.media-ref.right {
@@ -1053,16 +1438,9 @@
 		margin-bottom: 16px;
 	}
 
-	.log-images {
-		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
-		gap: 8px;
+	.log-diagram {
 		margin-bottom: 18px;
-	}
-
-	.log-images img {
-		aspect-ratio: 1;
-		opacity: 0.66;
+		border: 1px solid var(--surface-line);
 	}
 
 	.tag-row,
@@ -1107,6 +1485,11 @@
 		padding: 28px;
 		border-left: 4px solid var(--text-faint);
 		background: var(--surface-low);
+		transition: border-left-color 220ms ease;
+	}
+
+	.experience-card:hover {
+		border-left-color: var(--gold-strong);
 	}
 
 	.experience-card.featured {
@@ -1240,6 +1623,12 @@
 		background: var(--surface);
 		padding: 7px 10px;
 		font-size: 0.72rem;
+		transition: border-color 220ms ease, color 220ms ease;
+	}
+
+	.chip-row span:hover {
+		border-color: var(--gold-strong);
+		color: var(--gold);
 	}
 
 	.gallery-intro {
@@ -1275,6 +1664,11 @@
 		border: 1px solid var(--surface-line);
 		padding: 4px;
 		background: var(--surface);
+		transition: border-color 220ms ease;
+	}
+
+	.gallery-card:hover {
+		border-color: color-mix(in srgb, var(--gold-strong) 45%, var(--surface-line));
 	}
 
 	.gallery-wide {
@@ -1296,30 +1690,6 @@
 	.media-frame {
 		position: relative;
 		overflow: hidden;
-	}
-
-	.media-frame img {
-		transition: transform 600ms ease, opacity 220ms ease;
-	}
-
-	.gallery-card:hover img {
-		transform: scale(1.04);
-	}
-
-	.gallery-wide .media-frame img {
-		aspect-ratio: 16 / 9;
-	}
-
-	.gallery-portrait .media-frame img {
-		aspect-ratio: 3 / 4;
-	}
-
-	.gallery-square .media-frame img {
-		aspect-ratio: 1;
-	}
-
-	.gallery-panorama .media-frame img {
-		aspect-ratio: 21 / 9;
 	}
 
 	.meta-grid.four {
@@ -1357,6 +1727,9 @@
 		padding: 6px 10px;
 		border: 1px solid var(--surface-line);
 		background: color-mix(in srgb, var(--bg) 84%, transparent);
+		font-size: 0.62rem;
+		letter-spacing: 0.14em;
+		text-transform: uppercase;
 	}
 
 	.badge-row span:first-child {
@@ -1399,6 +1772,13 @@
 		font-size: 1.15rem;
 		color: var(--text);
 		resize: vertical;
+		transition: border-color 220ms ease;
+	}
+
+	.terminal-form input:focus,
+	.terminal-form textarea:focus {
+		outline: none;
+		border-bottom-color: var(--gold-strong);
 	}
 
 	.terminal-form input::placeholder,
@@ -1417,6 +1797,17 @@
 		letter-spacing: 0.18em;
 		text-transform: uppercase;
 		cursor: pointer;
+		transition: filter 220ms ease;
+	}
+
+	.terminal-form button:hover {
+		filter: brightness(1.08);
+	}
+
+	.form-hint {
+		margin: -14px 0 0;
+		color: var(--text-faint);
+		opacity: 0.8;
 	}
 
 	.contact-sidebar {
@@ -1451,7 +1842,6 @@
 		padding-bottom: 0;
 	}
 
-	.status-list strong:first-of-type,
 	.status-list div:first-child strong {
 		color: var(--green);
 	}
@@ -1545,32 +1935,15 @@
 		text-transform: uppercase;
 	}
 
-	.reveal {
-		opacity: 0;
-		transform: translateY(18px);
-		animation: rise 650ms ease forwards;
-	}
+	@media (prefers-reduced-motion: reduce) {
+		:global(html) {
+			scroll-behavior: auto;
+		}
 
-	.delay-1 {
-		animation-delay: 80ms;
-	}
-
-	.delay-2 {
-		animation-delay: 140ms;
-	}
-
-	.delay-3 {
-		animation-delay: 220ms;
-	}
-
-	.delay-4 {
-		animation-delay: 300ms;
-	}
-
-	@keyframes rise {
-		to {
-			opacity: 1;
-			transform: translateY(0);
+		.d-flow,
+		.d-dot,
+		.status-dot {
+			animation: none;
 		}
 	}
 
