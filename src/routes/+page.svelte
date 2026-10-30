@@ -7,6 +7,8 @@
 	const yearsOfExperience = new Date().getFullYear() - careerStart;
 
 	const nav = [
+		{ href: '#approach', label: 'Approach' },
+		{ href: '#ai', label: 'AI' },
 		{ href: '#experience', label: 'Experience' },
 		{ href: '#skills', label: 'Skills' },
 		{ href: '#contact', label: 'Contact' }
@@ -18,21 +20,48 @@
 		{ value: '4', label: 'domains: gaming, banking, fintech, logistics' }
 	];
 
-	const focus = [
+	const traceTotal = 182;
+
+	/** Times are in ms. `kind` picks the bar style: service, data store, or async work. */
+	const trace = [
+		{ name: 'gateway', depth: 0, start: 0, duration: 14, kind: 'svc', note: 'Auth and rate limiting at the edge' },
+		{ name: 'tournament-svc', depth: 0, start: 14, duration: 120, kind: 'svc', note: 'Validation and an idempotency key' },
+		{ name: 'mysql', depth: 1, start: 38, duration: 40, kind: 'data', note: 'One transaction, indexed lookups' },
+		{ name: 'redis', depth: 1, start: 84, duration: 6, kind: 'data', note: 'Hot config served from cache' },
+		{ name: 'kafka.publish', depth: 0, start: 134, duration: 10, kind: 'svc', note: 'Event out, at-least-once delivery' },
+		{ name: 'reward-worker', depth: 1, start: 144, duration: 38, kind: 'async', note: 'Async consumer with retries and a DLQ' }
+	];
+
+	const principles = [
+		{ title: 'Contracts first', copy: 'APIs and event schemas are agreed before code is written.' },
+		{ title: 'Design for failure', copy: 'Timeouts, retries, idempotency, and Saga for cross-service work.' },
+		{ title: 'Observable by default', copy: 'Traces, metrics, and alerts ship with the feature, not after.' },
+		{ title: 'Boring tech, done well', copy: 'Proven tools like Java, Spring, and Kafka, used carefully.' }
+	];
+
+	const harness = [
+		{ role: 'lead', task: '3 tasks filed' },
+		{ role: 'architect', task: 'plan + trade-offs' },
+		{ role: 'builder', task: 'code + unit tests' },
+		{ role: 'validator', task: 'lint, test, build' }
+	];
+
+	const pillars = [
 		{
-			title: 'Distributed services',
-			copy: 'Java and Spring Boot microservices with clear APIs over REST and gRPC, designed to scale and stay easy to change.',
-			tech: 'Java · Spring Boot · gRPC'
+			title: 'Skills',
+			copy: 'Team know-how packaged so agents load it on demand: conventions, runbooks, and service context.'
 		},
 		{
-			title: 'Event-driven systems',
-			copy: 'Asynchronous workflows with Kafka and RabbitMQ, using patterns like Saga to keep data consistent across services.',
-			tech: 'Kafka · RabbitMQ · Saga'
+			title: 'Commands',
+			copy: 'One-line workflows for the daily loop: plan, review, debug, and ship.'
 		},
 		{
-			title: 'Cloud and operations',
-			copy: 'Shipping to AWS and Kubernetes with CI/CD, then watching it in production with traces, metrics, and dashboards.',
-			tech: 'AWS · Kubernetes · Datadog'
+			title: 'Agent harness',
+			copy: 'Specialized roles that plan, build, and validate, with human approval gates in between.'
+		},
+		{
+			title: 'Automation',
+			copy: 'Shell and TypeScript tooling, hooks, and CI glue that take repetitive chores off the team.'
 		}
 	];
 
@@ -45,10 +74,11 @@
 			current: true,
 			items: [
 				'Build backend services for POP! Slots live game features: tournaments, dynamic bets, sale and version configuration, and sweepstakes.',
+				"Built the Server team's AI engineering kit: skills, commands, an agent harness, and automation for AI-assisted delivery.",
 				'Take part in design and code reviews for scalable live game service architecture.',
 				'Work with product, client, and DevOps teams to ship features reliably.'
 			],
-			stack: ['Java', 'Spring', 'Microservices']
+			stack: ['Java', 'Spring', 'Microservices', 'TypeScript', 'AI agents']
 		},
 		{
 			company: 'CIMB Bank Thai',
@@ -181,7 +211,8 @@
   <span class="t-key">"experience_years"</span>: <span class="t-num">{yearsOfExperience}</span>,
   <span class="t-key">"stack"</span>: [<span class="t-str">"Java"</span>, <span class="t-str">"Spring"</span>, <span class="t-str">"Kafka"</span>,
             <span class="t-str">"AWS"</span>, <span class="t-str">"Kubernetes"</span>],
-  <span class="t-key">"focus"</span>: <span class="t-str">"distributed systems"</span>
+  <span class="t-key">"focus"</span>: <span class="t-str">"distributed systems"</span>,
+  <span class="t-key">"workflow"</span>: <span class="t-str">"agent-first"</span>
 &#125;</code></pre>
 		</figure>
 	</section>
@@ -195,18 +226,87 @@
 		{/each}
 	</ul>
 
-	<section aria-labelledby="focus">
+	<section aria-labelledby="approach">
 		<div class="section-head">
-			<p class="eyebrow">What I do</p>
-			<h2 id="focus">Focus areas</h2>
+			<p class="eyebrow">Approach</p>
+			<h2 id="approach">How I build backend</h2>
+			<p class="section-lede">
+				One request through a live game backend, and the decisions I make at every hop.
+			</p>
 		</div>
-		<ul class="focus">
-			{#each focus as area, i}
+
+		<figure class="card trace">
+			<figcaption class="trace-head">
+				<span class="trace-method">POST</span>
+				<span class="trace-path">/tournaments/join</span>
+				<span class="trace-total">{traceTotal}ms</span>
+			</figcaption>
+			<ol class="spans">
+				{#each trace as span}
+					<li class="span" style:--depth={span.depth}>
+						<span class="span-name">{span.name}</span>
+						<span class="span-ms">{span.duration}ms</span>
+						<span class="span-track" aria-hidden="true">
+							<span
+								class="span-bar {span.kind}"
+								style:left={`${(span.start / traceTotal) * 100}%`}
+								style:width={`${(span.duration / traceTotal) * 100}%`}
+							></span>
+						</span>
+						<span class="span-note">{span.note}</span>
+					</li>
+				{/each}
+			</ol>
+			<div class="trace-foot">
+				<span>Illustrative trace</span>
+				<ul class="legend">
+					<li><span class="swatch span-bar svc"></span>service</li>
+					<li><span class="swatch span-bar data"></span>data store</li>
+					<li><span class="swatch span-bar async"></span>async</li>
+				</ul>
+			</div>
+		</figure>
+
+		<ul class="principles">
+			{#each principles as principle}
+				<li>
+					<h3>{principle.title}</h3>
+					<p>{principle.copy}</p>
+				</li>
+			{/each}
+		</ul>
+	</section>
+
+	<section aria-labelledby="ai">
+		<div class="ai">
+			<figure class="terminal" aria-label="A feature moving through the team's agent harness">
+				<div class="terminal-bar" aria-hidden="true">
+					<span></span><span></span><span></span>
+					<p>server-team / ai-kit</p>
+				</div>
+				<pre><code><span class="t-dim">$</span> kit feature <span class="t-str">"sweepstakes cooldown"</span>
+{#each harness as step}
+<span class="t-dim">▸</span> <span class="t-key">{step.role.padEnd(10)}</span> {step.task.padEnd(19)}<span class="t-ok">✓</span>{/each}
+<span class="t-dim">▸</span> <span class="t-key">{'pr'.padEnd(10)}</span> {'ready for review'.padEnd(19)}<span class="t-num">→ human</span></code></pre>
+			</figure>
+
+			<div>
+				<p class="eyebrow">AI-native engineering</p>
+				<h2 id="ai">How I work with AI</h2>
+				<p class="section-lede">
+					I built and maintain the AI engineering kit for the Server team at playSTUDIOS: the
+					skills, commands, agent harness, and automation the team uses to ship with AI.
+				</p>
+				<p class="ai-motto">AI does the legwork. Engineers own the decisions.</p>
+				<p class="ai-proof">This website was planned, built, and validated with the same setup.</p>
+			</div>
+		</div>
+
+		<ul class="pillars">
+			{#each pillars as pillar}
 				<li class="card">
-					<span class="focus-index">0{i + 1}</span>
-					<h3>{area.title}</h3>
-					<p>{area.copy}</p>
-					<span class="focus-tech">{area.tech}</span>
+					<h3>{pillar.title}</h3>
+					<p>{pillar.copy}</p>
 				</li>
 			{/each}
 		</ul>
@@ -368,6 +468,11 @@
 	ol {
 		padding: 0;
 		list-style: none;
+	}
+
+	p,
+	li {
+		text-wrap: pretty;
 	}
 
 	a {
@@ -709,38 +814,188 @@
 		line-height: 1.5;
 	}
 
-	/* Focus areas */
-
-	.focus {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
-	}
-
-	.focus li {
-		display: flex;
-		flex-direction: column;
-	}
-
-	.focus-index {
-		margin-bottom: 1rem;
-		font-family: var(--mono);
-		font-size: 0.8125rem;
-		color: var(--faint);
-	}
-
-	.focus p {
+	.section-lede {
+		max-width: 36rem;
 		margin-top: 0.5rem;
-		font-size: 0.9375rem;
 		color: var(--muted);
 	}
 
-	.focus-tech {
-		margin-top: auto;
-		padding-top: 1.25rem;
+	/* Request trace */
+
+	.trace {
+		padding: 0;
+		overflow: hidden;
+	}
+
+	.trace-head {
+		display: flex;
+		align-items: baseline;
+		gap: 0.75rem;
+		padding: 1rem 1.5rem;
+		border-bottom: 1px solid var(--line);
+		font-family: var(--mono);
+		font-size: 0.8125rem;
+	}
+
+	.trace-method {
+		padding: 0 0.375rem;
+		border-radius: 4px;
+		background: var(--accent-soft);
+		color: var(--accent);
+		font-weight: 600;
+	}
+
+	.trace-total {
+		margin-left: auto;
+		color: var(--faint);
+	}
+
+	.spans {
+		padding: 0.5rem 0;
+	}
+
+	.span {
+		display: grid;
+		grid-template-columns: 10rem 3.25rem minmax(0, 1fr) 17rem;
+		align-items: center;
+		gap: 1rem;
+		padding: 0.5rem 1.5rem;
+	}
+
+	.span:hover {
+		background: var(--chip);
+	}
+
+	.span-name {
+		padding-left: calc(var(--depth) * 1rem);
+		font-family: var(--mono);
+		font-size: 0.8125rem;
+	}
+
+	.span-ms {
 		font-family: var(--mono);
 		font-size: 0.75rem;
+		color: var(--faint);
+		text-align: right;
+	}
+
+	.span-track {
+		position: relative;
+		height: 0.625rem;
+		border-radius: 3px;
+		background: var(--chip);
+	}
+
+	.span-bar {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		min-width: 3px;
+		border-radius: 3px;
+		background: var(--accent);
+	}
+
+	.span-bar.data {
+		background: color-mix(in srgb, var(--text) 45%, transparent);
+	}
+
+	.span-bar.async {
+		background: repeating-linear-gradient(
+			-45deg,
+			var(--accent) 0 3px,
+			color-mix(in srgb, var(--accent) 35%, transparent) 3px 6px
+		);
+	}
+
+	.span-note {
+		font-size: 0.875rem;
+		color: var(--muted);
+	}
+
+	.trace-foot {
+		display: flex;
+		justify-content: space-between;
+		flex-wrap: wrap;
+		gap: 0.5rem 1.5rem;
+		padding: 0.75rem 1.5rem;
+		border-top: 1px solid var(--line);
+		font-family: var(--mono);
+		font-size: 0.75rem;
+		color: var(--faint);
+	}
+
+	.legend {
+		display: flex;
+		gap: 1rem;
+	}
+
+	.legend li {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.375rem;
+	}
+
+	.swatch {
+		position: static;
+		width: 0.75rem;
+		height: 0.5rem;
+	}
+
+	.principles {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	.principles li {
+		padding-left: 1rem;
+		border-left: 2px solid var(--accent);
+	}
+
+	.principles h3 {
+		font-size: 0.9375rem;
+	}
+
+	.principles p,
+	.pillars p {
+		margin-top: 0.25rem;
+		font-size: 0.875rem;
+		color: var(--muted);
+	}
+
+	/* AI */
+
+	.ai {
+		display: grid;
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+		gap: 3.5rem;
+		align-items: center;
+	}
+
+	.ai-motto {
+		margin-top: 1.5rem;
+		font-size: 1.125rem;
+		font-weight: 600;
+		letter-spacing: -0.01em;
+	}
+
+	.ai-proof {
+		margin-top: 0.75rem;
+		font-family: var(--mono);
+		font-size: 0.8125rem;
 		color: var(--accent);
+	}
+
+	.pillars {
+		display: grid;
+		grid-template-columns: repeat(4, minmax(0, 1fr));
+		gap: 1rem;
+		margin-top: 2.5rem;
+	}
+
+	.pillars h3 {
+		font-size: 0.9375rem;
 	}
 
 	/* Experience timeline */
@@ -927,13 +1182,30 @@
 			margin-top: 3.5rem;
 		}
 
-		.focus,
-		.skills {
+		.skills,
+		.principles,
+		.pillars {
 			grid-template-columns: repeat(2, minmax(0, 1fr));
 		}
 
-		.focus li:last-child {
+		.ai {
+			grid-template-columns: minmax(0, 1fr);
+			gap: 2rem;
+		}
+
+		.ai .terminal {
+			order: 1;
+		}
+
+		.span {
+			grid-template-columns: 9rem 3rem minmax(0, 1fr);
+			gap: 0.25rem 1rem;
+		}
+
+		.span-note {
 			grid-column: 1 / -1;
+			padding-left: calc(var(--depth) * 1rem);
+			font-size: 0.8125rem;
 		}
 
 		.contact {
@@ -982,10 +1254,25 @@
 			font-size: 1.5rem;
 		}
 
-		.focus,
 		.skills,
-		.facts {
+		.facts,
+		.principles,
+		.pillars {
 			grid-template-columns: minmax(0, 1fr);
+		}
+
+		.trace-head,
+		.span,
+		.trace-foot {
+			padding-inline: 1rem;
+		}
+
+		.span {
+			grid-template-columns: minmax(0, 1fr) auto;
+		}
+
+		.span-track {
+			grid-column: 1 / -1;
 		}
 
 		.timeline {
