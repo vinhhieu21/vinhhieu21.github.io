@@ -10,14 +10,7 @@
 		{ href: '#approach', label: 'Approach' },
 		{ href: '#ai', label: 'AI' },
 		{ href: '#experience', label: 'Experience' },
-		{ href: '#skills', label: 'Skills' },
 		{ href: '#contact', label: 'Contact' }
-	];
-
-	const stats = [
-		{ value: `${yearsOfExperience}+`, label: 'years building backend systems' },
-		{ value: '4', label: 'companies, including IBM and CIMB' },
-		{ value: '4', label: 'domains: gaming, banking, fintech, logistics' }
 	];
 
 	const traceTotal = 182;
@@ -32,37 +25,11 @@
 		{ name: 'reward-worker', depth: 1, start: 144, duration: 38, kind: 'async', note: 'Async consumer with retries and a DLQ' }
 	];
 
-	const principles = [
-		{ title: 'Contracts first', copy: 'APIs and event schemas are agreed before code is written.' },
-		{ title: 'Design for failure', copy: 'Timeouts, retries, idempotency, and Saga for cross-service work.' },
-		{ title: 'Observable by default', copy: 'Traces, metrics, and alerts ship with the feature, not after.' },
-		{ title: 'Boring tech, done well', copy: 'Proven tools like Java, Spring, and Kafka, used carefully.' }
-	];
-
 	const harness = [
 		{ role: 'lead', task: '3 tasks filed' },
 		{ role: 'architect', task: 'plan + trade-offs' },
 		{ role: 'builder', task: 'code + unit tests' },
 		{ role: 'validator', task: 'lint, test, build' }
-	];
-
-	const pillars = [
-		{
-			title: 'Skills',
-			copy: 'Team know-how packaged so agents load it on demand: conventions, runbooks, and service context.'
-		},
-		{
-			title: 'Commands',
-			copy: 'One-line workflows for the daily loop: plan, review, debug, and ship.'
-		},
-		{
-			title: 'Agent harness',
-			copy: 'Specialized roles that plan, build, and validate, with human approval gates in between.'
-		},
-		{
-			title: 'Automation',
-			copy: 'Shell and TypeScript tooling, hooks, and CI glue that take repetitive chores off the team.'
-		}
 	];
 
 	const experience = [
@@ -217,28 +184,16 @@
 		</figure>
 	</section>
 
-	<ul class="stats">
-		{#each stats as stat}
-			<li>
-				<strong>{stat.value}</strong>
-				<span>{stat.label}</span>
-			</li>
-		{/each}
-	</ul>
-
 	<section aria-labelledby="approach">
-		<div class="section-head">
-			<p class="eyebrow">Approach</p>
-			<h2 id="approach">How I build backend</h2>
-			<p class="section-lede">
-				One request through a live game backend, and the decisions I make at every hop.
-			</p>
-		</div>
+		<h2 id="approach">How I build backend</h2>
+		<p class="section-lede">
+			An illustrative request through a live game backend, and the decision I make at each hop.
+		</p>
 
 		<figure class="card trace">
 			<figcaption class="trace-head">
 				<span class="trace-method">POST</span>
-				<span class="trace-path">/tournaments/join</span>
+				<span>/tournaments/join</span>
 				<span class="trace-total">{traceTotal}ms</span>
 			</figcaption>
 			<ol class="spans">
@@ -257,66 +212,34 @@
 					</li>
 				{/each}
 			</ol>
-			<div class="trace-foot">
-				<span>Illustrative trace</span>
-				<ul class="legend">
-					<li><span class="swatch span-bar svc"></span>service</li>
-					<li><span class="swatch span-bar data"></span>data store</li>
-					<li><span class="swatch span-bar async"></span>async</li>
-				</ul>
-			</div>
 		</figure>
-
-		<ul class="principles">
-			{#each principles as principle}
-				<li>
-					<h3>{principle.title}</h3>
-					<p>{principle.copy}</p>
-				</li>
-			{/each}
-		</ul>
 	</section>
 
-	<section aria-labelledby="ai">
-		<div class="ai">
-			<figure class="terminal" aria-label="A feature moving through the team's agent harness">
-				<div class="terminal-bar" aria-hidden="true">
-					<span></span><span></span><span></span>
-					<p>server-team / ai-kit</p>
-				</div>
-				<pre><code><span class="t-dim">$</span> kit feature <span class="t-str">"sweepstakes cooldown"</span>
+	<section class="ai" aria-labelledby="ai">
+		<div>
+			<h2 id="ai">How I work with AI</h2>
+			<p class="section-lede">
+				I built and maintain the AI engineering kit for the Server team at playSTUDIOS: the skills,
+				commands, agent harness, and automation the team uses to ship with AI.
+			</p>
+			<p class="ai-motto">AI does the legwork. Engineers own the decisions.</p>
+			<p class="ai-proof">This website was planned, built, and validated with the same setup.</p>
+		</div>
+
+		<figure class="terminal" aria-label="A feature moving through the team's agent harness">
+			<div class="terminal-bar" aria-hidden="true">
+				<span></span><span></span><span></span>
+				<p>server-team / ai-kit</p>
+			</div>
+			<pre><code><span class="t-dim">$</span> kit feature <span class="t-str">"sweepstakes cooldown"</span>
 {#each harness as step}
 <span class="t-dim">▸</span> <span class="t-key">{step.role.padEnd(10)}</span> {step.task.padEnd(19)}<span class="t-ok">✓</span>{/each}
 <span class="t-dim">▸</span> <span class="t-key">{'pr'.padEnd(10)}</span> {'ready for review'.padEnd(19)}<span class="t-num">→ human</span></code></pre>
-			</figure>
-
-			<div>
-				<p class="eyebrow">AI-native engineering</p>
-				<h2 id="ai">How I work with AI</h2>
-				<p class="section-lede">
-					I built and maintain the AI engineering kit for the Server team at playSTUDIOS: the
-					skills, commands, agent harness, and automation the team uses to ship with AI.
-				</p>
-				<p class="ai-motto">AI does the legwork. Engineers own the decisions.</p>
-				<p class="ai-proof">This website was planned, built, and validated with the same setup.</p>
-			</div>
-		</div>
-
-		<ul class="pillars">
-			{#each pillars as pillar}
-				<li class="card">
-					<h3>{pillar.title}</h3>
-					<p>{pillar.copy}</p>
-				</li>
-			{/each}
-		</ul>
+		</figure>
 	</section>
 
 	<section aria-labelledby="experience">
-		<div class="section-head">
-			<p class="eyebrow">Career</p>
-			<h2 id="experience">Experience</h2>
-		</div>
+		<h2 id="experience">Experience</h2>
 		<ol class="timeline">
 			{#each experience as job}
 				<li class="job" class:current={job.current}>
@@ -343,23 +266,14 @@
 	</section>
 
 	<section aria-labelledby="skills">
-		<div class="section-head">
-			<p class="eyebrow">Toolbox</p>
-			<h2 id="skills">Skills</h2>
-		</div>
-		<div class="skills">
+		<h2 id="skills">Skills</h2>
+		<dl class="skills">
 			{#each skills as skill}
-				<div class="card">
-					<h3>{skill.group}</h3>
-					<ul class="chips">
-						{#each skill.items as item}
-							<li>{item}</li>
-						{/each}
-					</ul>
+				<div>
+					<dt>{skill.group}</dt>
+					<dd>{skill.items.join(', ')}</dd>
 				</div>
 			{/each}
-		</div>
-		<dl class="facts">
 			<div>
 				<dt>Education</dt>
 				<dd>Computer Science, Military Technical Academy</dd>
@@ -757,55 +671,18 @@
 		color: #f9a8d4;
 	}
 
-	/* Stats */
-
-	.stats {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		margin-top: 5rem;
-		border-block: 1px solid var(--line);
-	}
-
-	.stats li {
-		padding: 1.5rem 1.5rem 1.5rem 0;
-	}
-
-	.stats li + li {
-		padding-left: 1.5rem;
-		border-left: 1px solid var(--line);
-	}
-
-	.stats strong {
-		display: block;
-		font-size: 2rem;
-		font-weight: 650;
-		line-height: 1.2;
-		letter-spacing: -0.03em;
-	}
-
-	.stats span {
-		font-size: 0.875rem;
-		color: var(--muted);
-	}
-
 	/* Section headings */
 
-	.section-head {
-		margin-bottom: 2rem;
-	}
-
-	.eyebrow {
-		font-family: var(--mono);
-		font-size: 0.8125rem;
-		color: var(--accent);
-	}
-
 	h2 {
-		margin-top: 0.25rem;
+		margin-bottom: 1.5rem;
 		font-size: 1.75rem;
 		font-weight: 650;
 		line-height: 1.25;
 		letter-spacing: -0.025em;
+	}
+
+	h2:has(+ .section-lede) {
+		margin-bottom: 0.5rem;
 	}
 
 	h3 {
@@ -816,7 +693,7 @@
 
 	.section-lede {
 		max-width: 36rem;
-		margin-top: 0.5rem;
+		margin-bottom: 2rem;
 		color: var(--muted);
 	}
 
@@ -860,10 +737,6 @@
 		align-items: center;
 		gap: 1rem;
 		padding: 0.5rem 1.5rem;
-	}
-
-	.span:hover {
-		background: var(--chip);
 	}
 
 	.span-name {
@@ -912,69 +785,21 @@
 		color: var(--muted);
 	}
 
-	.trace-foot {
-		display: flex;
-		justify-content: space-between;
-		flex-wrap: wrap;
-		gap: 0.5rem 1.5rem;
-		padding: 0.75rem 1.5rem;
-		border-top: 1px solid var(--line);
-		font-family: var(--mono);
-		font-size: 0.75rem;
-		color: var(--faint);
-	}
-
-	.legend {
-		display: flex;
-		gap: 1rem;
-	}
-
-	.legend li {
-		display: inline-flex;
-		align-items: center;
-		gap: 0.375rem;
-	}
-
-	.swatch {
-		position: static;
-		width: 0.75rem;
-		height: 0.5rem;
-	}
-
-	.principles {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1.5rem;
-		margin-top: 2rem;
-	}
-
-	.principles li {
-		padding-left: 1rem;
-		border-left: 2px solid var(--accent);
-	}
-
-	.principles h3 {
-		font-size: 0.9375rem;
-	}
-
-	.principles p,
-	.pillars p {
-		margin-top: 0.25rem;
-		font-size: 0.875rem;
-		color: var(--muted);
-	}
-
 	/* AI */
 
 	.ai {
 		display: grid;
-		grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+		grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
 		gap: 3.5rem;
 		align-items: center;
 	}
 
+	.ai .section-lede {
+		margin-bottom: 0;
+	}
+
 	.ai-motto {
-		margin-top: 1.5rem;
+		margin-top: 1.25rem;
 		font-size: 1.125rem;
 		font-weight: 600;
 		letter-spacing: -0.01em;
@@ -985,17 +810,6 @@
 		font-family: var(--mono);
 		font-size: 0.8125rem;
 		color: var(--accent);
-	}
-
-	.pillars {
-		display: grid;
-		grid-template-columns: repeat(4, minmax(0, 1fr));
-		gap: 1rem;
-		margin-top: 2.5rem;
-	}
-
-	.pillars h3 {
-		font-size: 0.9375rem;
 	}
 
 	/* Experience timeline */
@@ -1095,31 +909,25 @@
 	/* Skills */
 
 	.skills {
-		display: grid;
-		grid-template-columns: repeat(3, minmax(0, 1fr));
-		gap: 1rem;
+		border-top: 1px solid var(--line);
 	}
 
-	.skills h3 {
-		margin-bottom: 0.75rem;
-		font-size: 0.9375rem;
-	}
-
-	.facts {
+	.skills div {
 		display: grid;
-		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-columns: 9rem minmax(0, 1fr);
 		gap: 1rem;
-		margin-top: 2rem;
+		padding: 0.75rem 0;
+		border-bottom: 1px solid var(--line);
 	}
 
 	dt {
 		font-family: var(--mono);
 		font-size: 0.8125rem;
+		line-height: 1.85;
 		color: var(--faint);
 	}
 
 	dd {
-		margin-top: 0.125rem;
 		font-size: 0.9375rem;
 	}
 
@@ -1134,7 +942,7 @@
 	}
 
 	.contact h2 {
-		margin-top: 0;
+		margin: 0;
 	}
 
 	.contact p {
@@ -1182,12 +990,6 @@
 			margin-top: 3.5rem;
 		}
 
-		.skills,
-		.principles,
-		.pillars {
-			grid-template-columns: repeat(2, minmax(0, 1fr));
-		}
-
 		.ai {
 			grid-template-columns: minmax(0, 1fr);
 			gap: 2rem;
@@ -1231,39 +1033,13 @@
 			margin-top: 4.5rem;
 		}
 
-		.stats {
+		.skills div {
 			grid-template-columns: minmax(0, 1fr);
-			margin-top: 3.5rem;
-		}
-
-		.stats li,
-		.stats li + li {
-			display: flex;
-			align-items: baseline;
-			gap: 1rem;
-			padding: 1rem 0;
-			border-left: 0;
-		}
-
-		.stats li + li {
-			border-top: 1px solid var(--line);
-		}
-
-		.stats strong {
-			min-width: 2.75rem;
-			font-size: 1.5rem;
-		}
-
-		.skills,
-		.facts,
-		.principles,
-		.pillars {
-			grid-template-columns: minmax(0, 1fr);
+			gap: 0.125rem;
 		}
 
 		.trace-head,
-		.span,
-		.trace-foot {
+		.span {
 			padding-inline: 1rem;
 		}
 
