@@ -38,7 +38,8 @@
   - CSS custom properties for light/dark themes
   - a persistent theme toggle using `localStorage`
   - an early inline theme bootstrap in `src/app.html` to reduce theme flash
-  - responsive layout with a large hero, supporting right-column panel, and multiple content sections
+  - a minimal, resume-style single column (intro, experience, skills, education, contact) with system fonts only, no web fonts or decorative graphics
+- The early theme bootstrap uses the stored theme, falling back to the OS `prefers-color-scheme`.
 - Theme state in `+page.svelte` uses Svelte 5 runes: `let theme = $state('light');`
 
 ## Content Notes

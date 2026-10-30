@@ -5,9 +5,9 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<script>
 			(function () {
-				const storedTheme = localStorage.getItem('theme');
-				const theme = storedTheme || 'dark';
-				document.documentElement.setAttribute('data-theme', theme);
+				const stored = localStorage.getItem('theme');
+				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+				document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
 			})();
 		</script>
 		%sveltekit.head%
