@@ -7,7 +7,6 @@
 
 	const nav = [
 		{ href: '#work', label: 'Work' },
-		{ href: '#ai', label: 'AI' },
 		{ href: '#skills', label: 'Skills' },
 		{ href: '#contact', label: 'Contact' }
 	];
@@ -58,15 +57,8 @@
 		}
 	];
 
-	const harness = [
-		{ role: 'Lead', task: 'Splits a feature into tracked tasks' },
-		{ role: 'Architect', task: 'Plans the change and weighs the trade-offs' },
-		{ role: 'Builder', task: 'Writes the code and the unit tests' },
-		{ role: 'Validator', task: 'Runs lint, tests, and the build, then checks the diff' },
-		{ role: 'Me', task: 'Reviews the pull request and owns the decision' }
-	];
-
 	const skills = [
+		{ group: 'AI engineering', items: 'Agent harness, skills, commands, and automation' },
 		{ group: 'Languages', items: 'Java, Go, Python, SQL' },
 		{ group: 'Frameworks', items: 'Spring Boot, Spring, gRPC' },
 		{ group: 'Messaging', items: 'Kafka, RabbitMQ' },
@@ -100,7 +92,7 @@
 	<title>Hieu Bui Vinh - Backend Engineer</title>
 	<meta
 		name="description"
-		content="Hieu Bui Vinh is a backend engineer in Hanoi building Java and Spring microservices, event-driven systems, and the AI engineering kit his team ships with."
+		content="Hieu Bui Vinh is a backend engineer in Hanoi building Java and Spring microservices, event-driven systems, and an AI engineering kit for the Server team at playSTUDIOS."
 	/>
 </svelte:head>
 
@@ -183,27 +175,6 @@
 				</li>
 			{/each}
 		</ol>
-	</section>
-
-	<section aria-labelledby="ai">
-		<h2 id="ai">How I work with AI</h2>
-		<p class="section-lede">
-			I built and maintain the AI engineering kit for the Server team at playSTUDIOS: the skills,
-			commands, agent harness, and automation the team uses to ship with AI. AI does the legwork.
-			Engineers own the decisions.
-		</p>
-
-		<p class="label">The agent harness</p>
-		<ol class="rows">
-			{#each harness as step, i}
-				<li class="row-head step">
-					<span class="meta">{String(i + 1).padStart(2, '0')}</span>
-					<h3>{step.role}</h3>
-					<span class="step-task">{step.task}</span>
-				</li>
-			{/each}
-		</ol>
-		<p class="note">This website was planned, built, and validated with the same setup.</p>
 	</section>
 
 	<section aria-labelledby="skills">
@@ -467,26 +438,11 @@
 		color: var(--muted);
 	}
 
-	.label {
-		margin-top: 2rem;
-		font-family: var(--mono);
-		font-size: 0.6875rem;
-		letter-spacing: 0.08em;
-		text-transform: uppercase;
-		color: var(--faint);
-	}
-
 	.meta {
 		font-family: var(--mono);
 		font-size: 0.75rem;
 		color: var(--faint);
 		white-space: nowrap;
-	}
-
-	.note {
-		margin-top: 1rem;
-		font-size: 0.875rem;
-		color: var(--faint);
 	}
 
 	/* Rows: the shared list pattern */
@@ -621,22 +577,7 @@
 		color: var(--faint);
 	}
 
-	/* AI harness */
 
-	.rows .step {
-		justify-content: flex-start;
-		gap: 1rem;
-		padding: 0.75rem 0;
-	}
-
-	.step h3 {
-		flex: 0 0 6.5rem;
-	}
-
-	.step-task {
-		font-size: 0.9375rem;
-		color: var(--muted);
-	}
 
 	/* Skills and contact */
 
@@ -724,17 +665,6 @@
 		.spans,
 		.trace-head {
 			padding-inline: 1rem;
-		}
-
-		.rows .step {
-			display: grid;
-			grid-template-columns: auto minmax(0, 1fr);
-			column-gap: 0.75rem;
-			row-gap: 0;
-		}
-
-		.step-task {
-			grid-column: 2;
 		}
 
 		.pair {
