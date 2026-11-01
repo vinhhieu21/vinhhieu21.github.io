@@ -38,8 +38,9 @@
   - CSS custom properties for light/dark themes
   - a persistent theme toggle using `localStorage`
   - an early inline theme bootstrap in `src/app.html` to reduce theme flash
-  - an editorial, single-column layout modeled on the lo-fi mode of felixrieseberg.com: plain top bar, serif intro, "How I build backend" request trace, then Work, Skills (including an AI engineering row), and Contact as quiet bordered rows
-  - warm paper colors, system font stacks only (serif for names and headlines, sans for body, mono for metadata), and a single accent color per theme used mainly in the trace
+  - an editorial, single-column layout modeled on the lo-fi mode of felixrieseberg.com: plain top bar, serif intro with a live Hanoi local-time line, then Work, Skills (including an AI engineering row), and Contact as quiet bordered rows
+  - warm paper colors, system font stacks only (serif for names and headlines, sans for body, mono for metadata), and a single accent color per theme used sparingly (status dot, focus rings)
+  - a `theme-color` meta tag kept in sync with `--bg` (set early in `src/app.html`, updated on toggle) so mobile browser chrome matches the page
 - The early theme bootstrap uses the stored theme, falling back to the OS `prefers-color-scheme`.
 - Theme state in `+page.svelte` uses Svelte 5 runes: `let theme = $state('light');`
 

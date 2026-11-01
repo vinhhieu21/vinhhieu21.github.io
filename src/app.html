@@ -3,11 +3,17 @@
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<meta name="theme-color" content="#f7f5ef" />
 		<script>
 			(function () {
 				const stored = localStorage.getItem('theme');
 				const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-				document.documentElement.dataset.theme = stored || (prefersDark ? 'dark' : 'light');
+				const theme = stored || (prefersDark ? 'dark' : 'light');
+				document.documentElement.dataset.theme = theme;
+				// Mirrors --bg in +page.svelte so the browser chrome matches before styles load.
+				if (theme === 'dark') {
+					document.querySelector('meta[name="theme-color"]').content = '#12110f';
+				}
 			})();
 		</script>
 		%sveltekit.head%

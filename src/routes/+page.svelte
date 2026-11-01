@@ -11,18 +11,6 @@
 		{ href: '#contact', label: 'Contact' }
 	];
 
-	const traceTotal = 182;
-
-	/** Times are in ms. `kind` picks the bar style: service, data store, or async work. */
-	const trace = [
-		{ name: 'gateway', depth: 0, start: 0, duration: 14, kind: 'svc', note: 'Auth and rate limiting at the edge' },
-		{ name: 'tournament-svc', depth: 0, start: 14, duration: 120, kind: 'svc', note: 'Validation and an idempotency key' },
-		{ name: 'mysql', depth: 1, start: 38, duration: 40, kind: 'data', note: 'One transaction, indexed lookups' },
-		{ name: 'redis', depth: 1, start: 84, duration: 6, kind: 'data', note: 'Hot config served from cache' },
-		{ name: 'kafka.publish', depth: 0, start: 134, duration: 10, kind: 'svc', note: 'Event out, at-least-once delivery' },
-		{ name: 'reward-worker', depth: 1, start: 144, duration: 38, kind: 'async', note: 'Async consumer with retries and a DLQ' }
-	];
-
 	const work = [
 		{
 			company: 'playSTUDIOS',
@@ -75,16 +63,42 @@
 		{ label: 'Phone', value: phone, href: `tel:${phone.replaceAll(' ', '')}` }
 	];
 
+	const clock = new Intl.DateTimeFormat('en-GB', {
+		timeZone: 'Asia/Ho_Chi_Minh',
+		hour: '2-digit',
+		minute: '2-digit'
+	});
+
 	let theme = $state('light');
+	/** Hanoi local time. Empty until mount so the prerendered page never shows a stale time. */
+	let localTime = $state('');
 
 	function toggleTheme() {
 		theme = theme === 'dark' ? 'light' : 'dark';
 		document.documentElement.dataset.theme = theme;
 		localStorage.setItem('theme', theme);
+		syncThemeColor();
+	}
+
+	/** Keeps the mobile browser chrome the same color as the page background. */
+	function syncThemeColor() {
+		const bg = getComputedStyle(document.documentElement).getPropertyValue('--bg').trim();
+		document.querySelector('meta[name="theme-color"]')?.setAttribute('content', bg);
 	}
 
 	onMount(() => {
 		theme = document.documentElement.dataset.theme || 'light';
+		syncThemeColor();
+
+		/** @type {ReturnType<typeof setTimeout>} */
+		let timer;
+		const tick = () => {
+			const now = new Date();
+			localTime = clock.format(now);
+			timer = setTimeout(tick, 60_000 - (now.getTime() % 60_000));
+		};
+		tick();
+		return () => clearTimeout(timer);
 	});
 </script>
 
@@ -118,6 +132,11 @@
 
 <main id="top" class="column">
 	<section class="intro">
+		<p class="locale">
+			<span class="locale-dot" aria-hidden="true"></span>
+			Hanoi, Vietnam
+			<span class="meta"><time class="locale-time">{localTime}</time> GMT+7</span>
+		</p>
 		<h1>Hi, I'm Hieu.</h1>
 		<p class="lede">
 			Backend engineer at playSTUDIOS in Hanoi. I build Java and Spring services that stay reliable in
@@ -127,37 +146,6 @@
 			<a href={`mailto:${email}`}>Email me</a>
 			<a href={github} target="_blank" rel="noreferrer">GitHub</a>
 		</p>
-	</section>
-
-	<section aria-labelledby="approach">
-		<h2 id="approach">How I build backend</h2>
-		<p class="section-lede">
-			An illustrative request through a live game backend, and the decision I make at each hop.
-		</p>
-
-		<figure class="trace">
-			<figcaption class="trace-head">
-				<span class="trace-method">POST</span>
-				<span>/tournaments/join</span>
-				<span class="trace-total">{traceTotal}ms</span>
-			</figcaption>
-			<ol class="spans">
-				{#each trace as span}
-					<li class="span" style:--depth={span.depth}>
-						<span class="span-name">{span.name}</span>
-						<span class="span-track" aria-hidden="true">
-							<span
-								class="span-bar {span.kind}"
-								style:left={`${(span.start / traceTotal) * 100}%`}
-								style:width={`${(span.duration / traceTotal) * 100}%`}
-							></span>
-						</span>
-						<span class="span-ms">{span.duration}ms</span>
-						<span class="span-note">{span.note}</span>
-					</li>
-				{/each}
-			</ol>
-		</figure>
 	</section>
 
 	<section aria-labelledby="work">
@@ -171,7 +159,11 @@
 					</div>
 					<p class="job-role">{job.role}</p>
 					<p class="job-summary">{job.summary}</p>
-					<p class="job-stack">{job.stack.join(' · ')}</p>
+					<ul class="job-stack" aria-label="Tech stack">
+						{#each job.stack as tech}
+							<li>{tech}</li>
+						{/each}
+					</ul>
 				</li>
 			{/each}
 		</ol>
@@ -311,6 +303,7 @@
 	}
 
 	.brand {
+		white-space: nowrap;
 		margin-right: auto;
 		font-size: 0.8125rem;
 		font-weight: 700;
@@ -321,6 +314,14 @@
 	nav {
 		display: flex;
 		gap: 1.25rem;
+	}
+
+	.brand,
+	nav a,
+	.footer > a,
+	.intro-links a {
+		display: inline-block;
+		padding-block: 0.25rem;
 	}
 
 	nav a {
@@ -336,8 +337,8 @@
 	.theme-toggle {
 		display: grid;
 		place-items: center;
-		width: 1.75rem;
-		height: 1.75rem;
+		width: 2rem;
+		height: 2rem;
 		padding: 0;
 		border: 1px solid var(--line);
 		border-radius: 4px;
@@ -380,6 +381,27 @@
 		margin-top: 4.5rem;
 		padding-bottom: 2.5rem;
 		border-bottom: 1px solid var(--line);
+	}
+
+	.locale {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		margin-bottom: 1.25rem;
+		font-size: 0.875rem;
+		color: var(--muted);
+	}
+
+	.locale-dot {
+		width: 0.4375rem;
+		height: 0.4375rem;
+		border-radius: 50%;
+		background: var(--accent);
+	}
+
+	.locale-time {
+		display: inline-block;
+		min-width: 5ch;
 	}
 
 	h1 {
@@ -432,12 +454,6 @@
 		line-height: 1.4;
 	}
 
-	.section-lede {
-		margin-top: 0.5rem;
-		font-size: 0.9375rem;
-		color: var(--muted);
-	}
-
 	.meta {
 		font-family: var(--mono);
 		font-size: 0.75rem;
@@ -462,95 +478,6 @@
 		gap: 1.5rem;
 	}
 
-	/* Request trace */
-
-	.trace {
-		margin-top: 1.5rem;
-		border: 1px solid var(--line);
-		border-radius: 4px;
-		background: var(--surface);
-	}
-
-	.trace-head {
-		display: flex;
-		align-items: baseline;
-		gap: 0.625rem;
-		padding: 0.75rem 1.25rem;
-		border-bottom: 1px solid var(--line);
-		font-family: var(--mono);
-		font-size: 0.8125rem;
-	}
-
-	.trace-method {
-		font-weight: 700;
-		color: var(--accent);
-	}
-
-	.trace-total {
-		margin-left: auto;
-		color: var(--faint);
-	}
-
-	.spans {
-		padding: 0.75rem 1.25rem 1rem;
-	}
-
-	.span {
-		display: grid;
-		grid-template-columns: 8.5rem minmax(0, 1fr) 3rem;
-		align-items: center;
-		column-gap: 1rem;
-		padding: 0.375rem 0;
-	}
-
-	.span-name {
-		padding-left: calc(var(--depth) * 0.875rem);
-		font-family: var(--mono);
-		font-size: 0.8125rem;
-	}
-
-	.span-track {
-		position: relative;
-		height: 0.5rem;
-		border-radius: 2px;
-		background: var(--track);
-	}
-
-	.span-bar {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		min-width: 3px;
-		border-radius: 2px;
-		background: var(--accent);
-	}
-
-	.span-bar.data {
-		background: color-mix(in srgb, var(--text) 45%, transparent);
-	}
-
-	.span-bar.async {
-		background: repeating-linear-gradient(
-			-45deg,
-			var(--accent) 0 3px,
-			color-mix(in srgb, var(--accent) 30%, transparent) 3px 6px
-		);
-	}
-
-	.span-ms {
-		font-family: var(--mono);
-		font-size: 0.75rem;
-		color: var(--faint);
-		text-align: right;
-	}
-
-	.span-note {
-		grid-column: 1 / -1;
-		padding-left: calc(var(--depth) * 0.875rem);
-		font-size: 0.8125rem;
-		color: var(--faint);
-	}
-
 	/* Work */
 
 	.job {
@@ -571,10 +498,18 @@
 	}
 
 	.job-stack {
+		display: flex;
+		flex-wrap: wrap;
+		column-gap: 0.5em;
 		margin-top: 0.5rem;
 		font-family: var(--mono);
 		font-size: 0.75rem;
 		color: var(--faint);
+	}
+
+	/* Each separator sticks to the item before it, so a wrapped line never starts with one. */
+	.job-stack li:not(:last-child)::after {
+		content: ' ·';
 	}
 
 
@@ -631,6 +566,12 @@
 		}
 	}
 
+	@media (max-width: 359px) {
+		.topbar nav {
+			display: none;
+		}
+	}
+
 	@media (max-width: 600px) {
 		.topbar {
 			gap: 1rem;
@@ -639,10 +580,6 @@
 
 		nav {
 			gap: 0.875rem;
-		}
-
-		.topbar nav {
-			display: none;
 		}
 
 		.intro {
@@ -655,16 +592,6 @@
 
 		.lede {
 			font-size: 1.1875rem;
-		}
-
-		.span {
-			grid-template-columns: 7.5rem minmax(0, 1fr) 2.75rem;
-			column-gap: 0.75rem;
-		}
-
-		.spans,
-		.trace-head {
-			padding-inline: 1rem;
 		}
 
 		.pair {
